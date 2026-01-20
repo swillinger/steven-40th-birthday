@@ -993,7 +993,7 @@ body {
 }
 
 /* ===================================
-   POOL RIPPLE BACKGROUND
+   POOL RIPPLE BACKGROUND - REALISTIC
    =================================== */
 
 .pool-ripple-bg {
@@ -1002,21 +1002,165 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background:
-        radial-gradient(circle at 30% 40%, rgba(111, 221, 255, 0.3) 0%, transparent 50%),
-        radial-gradient(circle at 70% 60%, rgba(0, 201, 255, 0.2) 0%, transparent 50%);
-    animation: rippleMove 8s ease-in-out infinite;
+    background-image: url('../images/decorations/pool-ripple.jpg');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.15;
+    animation: rippleMove 20s ease-in-out infinite;
     pointer-events: none;
+    filter: brightness(1.2) contrast(1.1) saturate(1.3);
+    mix-blend-mode: overlay;
+}
+
+.pool-ripple-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(0, 201, 255, 0.4) 0%, transparent 60%),
+        radial-gradient(circle at 70% 60%, rgba(111, 221, 255, 0.3) 0%, transparent 60%);
+    animation: waterShimmer 15s ease-in-out infinite;
 }
 
 @keyframes rippleMove {
     0%, 100% {
-        transform: scale(1) rotate(0deg);
+        transform: scale(1) translateY(0);
+        opacity: 0.15;
+    }
+    50% {
+        transform: scale(1.08) translateY(-10px);
+        opacity: 0.22;
+    }
+}
+
+@keyframes waterShimmer {
+    0%, 100% {
         opacity: 0.6;
     }
     50% {
-        transform: scale(1.05) rotate(2deg);
-        opacity: 0.8;
+        opacity: 1;
+    }
+}
+
+/* ===================================
+   LCD/STATIC RETRO EFFECTS
+   =================================== */
+
+.lcd-scanlines {
+    position: relative;
+    overflow: hidden;
+}
+
+.lcd-scanlines::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.03) 0px,
+        rgba(0, 0, 0, 0.03) 1px,
+        transparent 1px,
+        transparent 2px
+    );
+    pointer-events: none;
+    z-index: 10;
+    animation: scanlineMove 8s linear infinite;
+}
+
+.lcd-scanlines::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(255, 0, 255, 0.02) 0px,
+            rgba(0, 255, 255, 0.02) 1px,
+            rgba(0, 255, 0, 0.02) 2px,
+            transparent 3px
+        );
+    pointer-events: none;
+    z-index: 10;
+    mix-blend-mode: screen;
+}
+
+@keyframes scanlineMove {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(10px);
+    }
+}
+
+.static-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMGBwgJCg0OpaFhAAAAHElEQVQ4y2MYBaNgFIyCUTAKRsEoGAWjYBQMAAAFFAAB8YUNKwAAAABJRU5ErkJggg==');
+    opacity: 0.015;
+    pointer-events: none;
+    z-index: 9999;
+    animation: staticNoise 0.2s steps(10) infinite;
+    mix-blend-mode: overlay;
+}
+
+@keyframes staticNoise {
+    0% { transform: translate(0, 0); }
+    10% { transform: translate(-5%, -5%); }
+    20% { transform: translate(-10%, 5%); }
+    30% { transform: translate(5%, -10%); }
+    40% { transform: translate(-5%, 15%); }
+    50% { transform: translate(-10%, 5%); }
+    60% { transform: translate(15%, 0); }
+    70% { transform: translate(0, 10%); }
+    80% { transform: translate(-15%, 0); }
+    90% { transform: translate(10%, 5%); }
+    100% { transform: translate(5%, 0); }
+}
+
+.vhs-effect {
+    position: relative;
+}
+
+.vhs-effect::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        180deg,
+        rgba(255, 0, 255, 0.05) 0%,
+        transparent 10%,
+        transparent 90%,
+        rgba(0, 255, 255, 0.05) 100%
+    );
+    pointer-events: none;
+    animation: vhsShift 3s ease-in-out infinite;
+    mix-blend-mode: color-dodge;
+}
+
+@keyframes vhsShift {
+    0%, 100% {
+        transform: translateX(0);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateX(2px);
+        opacity: 0.5;
     }
 }
 
