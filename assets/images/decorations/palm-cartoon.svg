@@ -1,0 +1,185 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" fill="none">
+  <defs>
+    <!-- Trunk gradients with texture -->
+    <linearGradient id="trunk-main" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6B4423;stop-opacity:1" />
+      <stop offset="20%" style="stop-color:#8B5A2B;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#A0683D;stop-opacity:1" />
+      <stop offset="80%" style="stop-color:#8B5A2B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B4423;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="trunk-shadow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4A2F1A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#5C3A22;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A2F1A;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Palm frond gradients -->
+    <linearGradient id="leaf-light" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7FDB6C;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="leaf-medium" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#66BB6A;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#43A047;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2E7D32;stop-opacity:1" />
+    </linearGradient>
+
+    <linearGradient id="leaf-dark" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#43A047;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#2E7D32;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1B5E20;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Shadows -->
+    <filter id="palm-shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="3" dy="6" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Coconut texture -->
+    <radialGradient id="coconut-grad">
+      <stop offset="0%" style="stop-color:#8D6E4F;stop-opacity:1" />
+      <stop offset="70%" style="stop-color:#6B4F3A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#4A3426;stop-opacity:1" />
+    </radialGradient>
+  </defs>
+
+  <!-- Trunk with segments and texture -->
+  <g filter="url(#palm-shadow)">
+    <!-- Main trunk curve -->
+    <path d="M 145 500 Q 140 450 138 400 Q 136 350 140 300
+             Q 142 250 145 200 Q 148 150 152 100 Q 155 50 160 20"
+          stroke="url(#trunk-main)" stroke-width="28" fill="none" stroke-linecap="round"/>
+
+    <!-- Trunk highlights -->
+    <path d="M 150 500 Q 148 450 146 400 Q 145 350 147 300
+             Q 149 250 151 200 Q 153 150 156 100 Q 158 50 162 20"
+          stroke="url(#trunk-main)" stroke-width="22" fill="none" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Trunk segments (texture rings) -->
+    <ellipse cx="145" cy="450" rx="16" ry="8" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="142" cy="400" rx="16" ry="8" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="140" cy="350" rx="16" ry="8" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="142" cy="300" rx="16" ry="8" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="145" cy="250" rx="16" ry="8" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="147" cy="200" rx="15" ry="7" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="150" cy="150" rx="14" ry="7" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="152" cy="100" rx="13" ry="6" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+    <ellipse cx="155" cy="50" rx="12" ry="6" fill="none" stroke="url(#trunk-shadow)" stroke-width="2" opacity="0.6"/>
+  </g>
+
+  <!-- Coconuts at crown -->
+  <g filter="url(#palm-shadow)">
+    <ellipse cx="135" cy="65" rx="12" ry="14" fill="url(#coconut-grad)"/>
+    <ellipse cx="155" cy="70" rx="13" ry="15" fill="url(#coconut-grad)"/>
+    <ellipse cx="170" cy="68" rx="12" ry="14" fill="url(#coconut-grad)"/>
+    <!-- Coconut highlights -->
+    <ellipse cx="138" cy="60" rx="4" ry="5" fill="#A0826A" opacity="0.6"/>
+    <ellipse cx="158" cy="65" rx="4" ry="5" fill="#A0826A" opacity="0.6"/>
+  </g>
+
+  <!-- Palm Fronds - Detailed with leaflets -->
+  <g filter="url(#palm-shadow)">
+    <!-- Back fronds (darker) -->
+    <g opacity="0.7">
+      <!-- Back left frond -->
+      <path d="M 160 30 Q 100 35 50 55 Q 20 65 10 80
+               L 15 82 Q 30 70 60 60 Q 110 42 160 30"
+            fill="url(#leaf-dark)"/>
+      <!-- Leaflets on back left -->
+      <path d="M 140 32 L 120 40 M 120 38 L 100 48 M 100 46 L 80 56 M 80 54 L 60 64 M 60 62 L 40 72"
+            stroke="url(#leaf-dark)" stroke-width="3" opacity="0.5"/>
+
+      <!-- Back right frond -->
+      <path d="M 160 30 Q 220 35 270 55 Q 300 65 310 80
+               L 305 82 Q 290 70 260 60 Q 210 42 160 30"
+            fill="url(#leaf-dark)"/>
+      <!-- Leaflets on back right -->
+      <path d="M 180 32 L 200 40 M 200 38 L 220 48 M 220 46 L 240 56 M 240 54 L 260 64 M 260 62 L 280 72"
+            stroke="url(#leaf-dark)" stroke-width="3" opacity="0.5"/>
+    </g>
+
+    <!-- Middle layer fronds -->
+    <!-- Left middle frond -->
+    <path d="M 160 25 Q 105 30 60 50 Q 35 60 20 75
+             Q 15 82 18 85 Q 22 87 30 80 Q 55 65 90 50 Q 130 32 160 25"
+          fill="url(#leaf-medium)"/>
+    <!-- Detailed leaflets left middle -->
+    <path d="M 145 27 L 125 35 Q 123 36 125 37 L 105 45 Q 103 46 105 47
+             L 85 55 Q 83 56 85 57 L 65 65 Q 63 66 65 67 L 45 75 Q 43 76 45 77"
+          stroke="url(#leaf-light)" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Right middle frond -->
+    <path d="M 160 25 Q 215 30 260 50 Q 285 60 300 75
+             Q 305 82 302 85 Q 298 87 290 80 Q 265 65 230 50 Q 190 32 160 25"
+          fill="url(#leaf-medium)"/>
+    <!-- Detailed leaflets right middle -->
+    <path d="M 175 27 L 195 35 Q 197 36 195 37 L 215 45 Q 217 46 215 47
+             L 235 55 Q 237 56 235 57 L 255 65 Q 257 66 255 67 L 275 75 Q 277 76 275 77"
+          stroke="url(#leaf-light)" stroke-width="4" stroke-linecap="round"/>
+
+    <!-- Front/Top fronds (brightest) -->
+    <!-- Center top frond -->
+    <path d="M 160 20 Q 160 0 162 -15 Q 163 -25 165 -30
+             L 167 -30 Q 168 -25 169 -15 Q 170 0 170 20 Q 169 30 165 32 Q 161 32 160 20"
+          fill="url(#leaf-light)"/>
+    <!-- Center leaflets -->
+    <path d="M 155 15 L 145 8 M 145 6 L 135 0 M 135 -2 L 130 -8
+             M 175 15 L 185 8 M 185 6 L 195 0 M 195 -2 L 200 -8"
+          stroke="url(#leaf-light)" stroke-width="3" stroke-linecap="round" opacity="0.8"/>
+
+    <!-- Front left diagonal frond -->
+    <path d="M 160 22 Q 125 20 90 30 Q 60 40 40 55
+             Q 35 60 38 63 Q 43 65 52 58 Q 75 45 105 35 Q 135 27 160 22"
+          fill="url(#leaf-light)"/>
+    <!-- Leaflets front left -->
+    <path d="M 148 23 L 130 27 Q 128 28 130 29 L 110 35 Q 108 36 110 37
+             L 90 43 Q 88 44 90 45 L 70 51 Q 68 52 70 53 L 50 59"
+          stroke="#A5D6A7" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Front right diagonal frond -->
+    <path d="M 160 22 Q 195 20 230 30 Q 260 40 280 55
+             Q 285 60 282 63 Q 277 65 268 58 Q 245 45 215 35 Q 185 27 160 22"
+          fill="url(#leaf-light)"/>
+    <!-- Leaflets front right -->
+    <path d="M 172 23 L 190 27 Q 192 28 190 29 L 210 35 Q 212 36 210 37
+             L 230 43 Q 232 44 230 45 L 250 51 Q 252 52 250 53 L 270 59"
+          stroke="#A5D6A7" stroke-width="5" stroke-linecap="round" opacity="0.9"/>
+
+    <!-- Additional side fronds for fullness -->
+    <!-- Far left frond -->
+    <path d="M 160 28 Q 110 40 70 62 Q 45 75 30 90
+             Q 27 95 30 97 Q 35 98 45 90 Q 70 70 110 50 Q 145 35 160 28"
+          fill="url(#leaf-medium)" opacity="0.85"/>
+
+    <!-- Far right frond -->
+    <path d="M 160 28 Q 210 40 250 62 Q 275 75 290 90
+             Q 293 95 290 97 Q 285 98 275 90 Q 250 70 210 50 Q 175 35 160 28"
+          fill="url(#leaf-medium)" opacity="0.85"/>
+  </g>
+
+  <!-- Highlights on trunk for dimension -->
+  <g opacity="0.4">
+    <path d="M 152 490 Q 150 440 148 390 Q 147 340 149 290
+             Q 151 240 153 190 Q 155 140 158 90 Q 160 40 163 15"
+          stroke="white" stroke-width="6" fill="none" stroke-linecap="round"/>
+  </g>
+
+  <!-- Final highlight touches on leaves -->
+  <g opacity="0.5">
+    <ellipse cx="140" cy="35" rx="20" ry="8" fill="white" transform="rotate(-30 140 35)"/>
+    <ellipse cx="180" cy="35" rx="20" ry="8" fill="white" transform="rotate(30 180 35)"/>
+    <ellipse cx="160" cy="15" rx="12" ry="6" fill="white"/>
+  </g>
+</svg>

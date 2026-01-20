@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 800" fill="none">
+  <defs>
+    <!-- Detailed marble gradient -->
+    <radialGradient id="marble-main" cx="40%" cy="30%">
+      <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="30%" style="stop-color:#F5F5F5;stop-opacity:1" />
+      <stop offset="60%" style="stop-color:#E8E8E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#D0D0D0;stop-opacity:1" />
+    </radialGradient>
+
+    <linearGradient id="marble-shadow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C5C5C5;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D8D8D8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#B8B8B8;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Vaporwave overlay gradients -->
+    <linearGradient id="vaporwave-pink" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6FD8;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#FF1493;stop-opacity:0.2" />
+    </linearGradient>
+
+    <linearGradient id="vaporwave-cyan" x1="0%" y1="100%" x2="0%" y2="0%">
+      <stop offset="0%" style="stop-color:#00D9FF;stop-opacity:0.35" />
+      <stop offset="100%" style="stop-color:#00CED1;stop-opacity:0.2" />
+    </linearGradient>
+
+    <!-- Shadows and depth -->
+    <filter id="depth-shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="6" dy="12" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.5"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <filter id="glow-effect">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Pedestal - classical style -->
+  <g filter="url(#depth-shadow)">
+    <!-- Base -->
+    <rect x="80" y="720" width="240" height="60" fill="url(#marble-shadow)" rx="4"/>
+    <rect x="75" y="715" width="250" height="10" fill="#C0C0C0" opacity="0.9"/>
+    <polygon points="75,725 325,725 335,720 65,720" fill="#AFAFAF" opacity="0.7"/>
+
+    <!-- Middle tier -->
+    <rect x="100" y="640" width="200" height="80" fill="url(#marble-shadow)" rx="3"/>
+    <rect x="95" y="635" width="210" height="10" fill="#C8C8C8" opacity="0.9"/>
+
+    <!-- Top tier -->
+    <rect x="120" y="580" width="160" height="60" fill="url(#marble-shadow)" rx="2"/>
+  </g>
+
+  <!-- Body/Torso - anatomically detailed -->
+  <g filter="url(#depth-shadow)">
+    <!-- Hips and lower torso -->
+    <ellipse cx="200" cy="520" rx="55" ry="30" fill="url(#marble-main)"/>
+    <path d="M 145 520 Q 145 480 150 450 L 250 450 Q 255 480 255 520 Z"
+          fill="url(#marble-main)" opacity="0.95"/>
+
+    <!-- Abdomen with muscle definition -->
+    <path d="M 155 450 Q 160 420 165 390 Q 170 360 175 340
+             L 225 340 Q 230 360 235 390 Q 240 420 245 450 Z"
+          fill="url(#marble-main)"/>
+
+    <!-- Abs definition (subtle) -->
+    <ellipse cx="190" cy="380" rx="8" ry="12" fill="#D8D8D8" opacity="0.3"/>
+    <ellipse cx="210" cy="380" rx="8" ry="12" fill="#D8D8D8" opacity="0.3"/>
+    <ellipse cx="190" cy="410" rx="9" ry="13" fill="#D8D8D8" opacity="0.3"/>
+    <ellipse cx="210" cy="410" rx="9" ry="13" fill="#D8D8D8" opacity="0.3"/>
+
+    <!-- Chest/pectorals -->
+    <ellipse cx="175" cy="310" rx="28" ry="35" fill="url(#marble-main)"/>
+    <ellipse cx="225" cy="310" rx="28" ry="35" fill="url(#marble-main)"/>
+    <path d="M 147 310 Q 147 290 155 275 Q 175 270 200 270 Q 225 270 245 275 Q 253 290 253 310 Z"
+          fill="url(#marble-main)" opacity="0.9"/>
+  </g>
+
+  <!-- Arms -->
+  <g filter="url(#depth-shadow)">
+    <!-- Right arm (down) -->
+    <ellipse cx="135" cy="320" rx="18" ry="28" fill="url(#marble-main)" transform="rotate(-15 135 320)"/>
+    <ellipse cx="125" cy="380" rx="15" ry="35" fill="url(#marble-shadow)" transform="rotate(-10 125 380)"/>
+    <ellipse cx="120" cy="450" rx="12" ry="30" fill="url(#marble-main)" transform="rotate(-5 120 450)"/>
+
+    <!-- Left arm (raised to head) -->
+    <ellipse cx="265" cy="280" rx="18" ry="30" fill="url(#marble-main)" transform="rotate(25 265 280)"/>
+    <ellipse cx="275" cy="220" rx="15" ry="28" fill="url(#marble-shadow)" transform="rotate(35 275 220)"/>
+  </g>
+
+  <!-- Neck -->
+  <rect x="180" y="240" width="40" height="35" rx="8" fill="url(#marble-main)" filter="url(#depth-shadow)"/>
+
+  <!-- Head - detailed classical features -->
+  <g filter="url(#depth-shadow)">
+    <!-- Skull/cranium -->
+    <ellipse cx="200" cy="180" rx="52" ry="65" fill="url(#marble-main)"/>
+
+    <!-- Face structure -->
+    <path d="M 160 160 Q 165 200 180 220 Q 200 225 220 220 Q 235 200 240 160"
+          fill="url(#marble-main)" opacity="0.95"/>
+
+    <!-- Nose (classical Roman) -->
+    <path d="M 200 165 L 198 195 Q 198 202 200 203 Q 202 202 202 195 L 200 165"
+          fill="#D0D0D0" stroke="#B8B8B8" stroke-width="0.5"/>
+    <ellipse cx="196" cy="205" rx="3" ry="2" fill="#C0C0C0" opacity="0.6"/>
+    <ellipse cx="204" cy="205" rx="3" ry="2" fill="#C0C0C0" opacity="0.6"/>
+
+    <!-- Eyes (closed, classical) -->
+    <path d="M 175 175 Q 183 173 190 175" stroke="#B0B0B0" stroke-width="2" fill="none" opacity="0.7"/>
+    <path d="M 210 175 Q 217 173 225 175" stroke="#B0B0B0" stroke-width="2" fill="none" opacity="0.7"/>
+    <ellipse cx="182" cy="175" rx="10" ry="5" fill="#C8C8C8" opacity="0.4"/>
+    <ellipse cx="217" cy="175" rx="10" ry="5" fill="#C8C8C8" opacity="0.4"/>
+
+    <!-- Eyebrows -->
+    <path d="M 170 168 Q 182 165 192 167" stroke="#B8B8B8" stroke-width="1.5" fill="none" opacity="0.5"/>
+    <path d="M 208 167 Q 218 165 230 168" stroke="#B8B8B8" stroke-width="1.5" fill="none" opacity="0.5"/>
+
+    <!-- Mouth (slight expression) -->
+    <path d="M 185 215 Q 200 217 215 215" stroke="#B8B8B8" stroke-width="2" fill="none" opacity="0.6"/>
+    <ellipse cx="200" cy="212" rx="10" ry="3" fill="#D0D0D0" opacity="0.3"/>
+
+    <!-- Chin definition -->
+    <ellipse cx="200" cy="230" rx="15" ry="10" fill="#E0E0E0" opacity="0.4"/>
+
+    <!-- Cheekbones -->
+    <ellipse cx="170" cy="190" rx="12" ry="18" fill="#E8E8E8" opacity="0.3"/>
+    <ellipse cx="230" cy="190" rx="12" ry="18" fill="#E8E8E8" opacity="0.3"/>
+  </g>
+
+  <!-- Hair - Classical curly style (detailed) -->
+  <g filter="url(#depth-shadow)">
+    <!-- Back/sides of hair -->
+    <circle cx="160" cy="145" r="15" fill="url(#marble-shadow)" opacity="0.8"/>
+    <circle cx="240" cy="145" r="15" fill="url(#marble-shadow)" opacity="0.8"/>
+    <circle cx="155" cy="165" r="13" fill="url(#marble-shadow)" opacity="0.75"/>
+    <circle cx="245" cy="165" r="13" fill="url(#marble-shadow)" opacity="0.75"/>
+
+    <!-- Top curls -->
+    <circle cx="180" cy="125" r="16" fill="url(#marble-main)" opacity="0.9"/>
+    <circle cx="200" cy="120" r="18" fill="url(#marble-main)" opacity="0.95"/>
+    <circle cx="220" cy="125" r="16" fill="url(#marble-main)" opacity="0.9"/>
+
+    <!-- Front curls (forehead) -->
+    <circle cx="190" cy="135" r="14" fill="url(#marble-main)" opacity="0.9"/>
+    <circle cx="210" cy="135" r="14" fill="url(#marble-main)" opacity="0.9"/>
+    <circle cx="170" cy="140" r="12" fill="url(#marble-main)" opacity="0.85"/>
+    <circle cx="230" cy="140" r="12" fill="url(#marble-main)" opacity="0.85"/>
+
+    <!-- Very top (crown) -->
+    <circle cx="200" cy="110" r="16" fill="url(#marble-main)" opacity="0.95"/>
+    <circle cx="185" cy="115" r="13" fill="url(#marble-main)" opacity="0.9"/>
+    <circle cx="215" cy="115" r="13" fill="url(#marble-main)" opacity="0.9"/>
+  </g>
+
+  <!-- Legs (partial, on pedestal) -->
+  <g filter="url(#depth-shadow)">
+    <ellipse cx="175" cy="545" rx="22" ry="35" fill="url(#marble-main)"/>
+    <ellipse cx="225" cy="545" rx="22" ry="35" fill="url(#marble-main)"/>
+  </g>
+
+  <!-- Vaporwave color overlay with glow -->
+  <g filter="url(#glow-effect)">
+    <!-- Pink wash on upper body -->
+    <ellipse cx="200" cy="200" rx="70" ry="150" fill="url(#vaporwave-pink)" opacity="0.5"/>
+
+    <!-- Cyan wash on lower body -->
+    <ellipse cx="200" cy="450" rx="60" ry="120" fill="url(#vaporwave-cyan)" opacity="0.5"/>
+
+    <!-- Pink glow on head -->
+    <ellipse cx="200" cy="170" rx="60" ry="70" fill="url(#vaporwave-pink)" opacity="0.4"/>
+  </g>
+
+  <!-- Marble highlights (simulate light reflection) -->
+  <g opacity="0.6">
+    <ellipse cx="175" cy="160" rx="20" ry="30" fill="white" opacity="0.5"/>
+    <ellipse cx="185" cy="300" rx="25" ry="35" fill="white" opacity="0.4"/>
+    <ellipse cx="210" cy="400" rx="20" ry="30" fill="white" opacity="0.35"/>
+  </g>
+
+  <!-- Shadow under figure for depth -->
+  <ellipse cx="200" cy="580" rx="70" ry="12" fill="black" opacity="0.15"/>
+</svg>
