@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 500" fill="none">
+  <defs>
+    <!-- Marble gradient -->
+    <linearGradient id="marble" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8E8E8;stop-opacity:1" />
+      <stop offset="25%" style="stop-color:#FFFFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#D5D5D5;stop-opacity:1" />
+      <stop offset="75%" style="stop-color:#F0F0F0;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#DADADA;stop-opacity:1" />
+    </linearGradient>
+
+    <!-- Vaporwave gradient overlay -->
+    <linearGradient id="vaporwave" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6FD8;stop-opacity:0.3" />
+      <stop offset="50%" style="stop-color:#00D9FF;stop-opacity:0.2" />
+      <stop offset="100%" style="stop-color:#B967FF;stop-opacity:0.3" />
+    </linearGradient>
+
+    <!-- Shadow -->
+    <filter id="statueShadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="5"/>
+      <feOffset dx="4" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Glow effect -->
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Pedestal base -->
+  <rect x="80" y="420" width="140" height="60" fill="url(#marble)" filter="url(#statueShadow)"/>
+  <rect x="75" y="415" width="150" height="10" fill="#C0C0C0" opacity="0.8"/>
+  <polygon points="75,425 225,425 235,420 65,420" fill="#B0B0B0"/>
+
+  <!-- Middle pedestal -->
+  <rect x="95" y="350" width="110" height="70" fill="url(#marble)" filter="url(#statueShadow)"/>
+  <rect x="90" y="345" width="120" height="10" fill="#C5C5C5" opacity="0.9"/>
+
+  <!-- Torso/Toga -->
+  <path d="M120 350 Q115 320 115 290 L115 250 Q115 230 125 220 Q135 215 150 215 Q165 215 175 220 Q185 230 185 250 L185 290 Q185 320 180 350 Z"
+        fill="url(#marble)" filter="url(#statueShadow)"/>
+
+  <!-- Toga draping details -->
+  <path d="M120 280 Q130 275 140 278 Q145 280 145 290"
+        stroke="#C0C0C0" stroke-width="2" fill="none" opacity="0.6"/>
+  <path d="M180 300 Q170 295 160 298 Q155 300 155 310"
+        stroke="#C0C0C0" stroke-width="2" fill="none" opacity="0.6"/>
+
+  <!-- Shoulders -->
+  <ellipse cx="130" cy="220" rx="18" ry="15" fill="url(#marble)" opacity="0.9"/>
+  <ellipse cx="170" cy="220" rx="18" ry="15" fill="url(#marble)" opacity="0.9"/>
+
+  <!-- Neck -->
+  <rect x="135" y="195" width="30" height="25" rx="5" fill="url(#marble)" filter="url(#statueShadow)"/>
+
+  <!-- Head base -->
+  <ellipse cx="150" cy="150" rx="45" ry="55" fill="url(#marble)" filter="url(#statueShadow)"/>
+
+  <!-- Facial features - classical Roman style -->
+  <!-- Nose -->
+  <path d="M150 135 L148 155 Q148 160 150 160 Q152 160 152 155 L150 135"
+        fill="#D0D0D0" opacity="0.8"/>
+
+  <!-- Eyes (closed, classical) -->
+  <ellipse cx="135" cy="140" rx="8" ry="4" fill="#B0B0B0" opacity="0.6"/>
+  <ellipse cx="165" cy="140" rx="8" ry="4" fill="#B0B0B0" opacity="0.6"/>
+
+  <!-- Lips -->
+  <path d="M140 170 Q150 172 160 170" stroke="#C0C0C0" stroke-width="2" fill="none" opacity="0.5"/>
+
+  <!-- Hair - classical curls -->
+  <circle cx="130" cy="110" r="12" fill="url(#marble)" opacity="0.9"/>
+  <circle cx="150" cy="105" r="14" fill="url(#marble)" opacity="0.9"/>
+  <circle cx="170" cy="110" r="12" fill="url(#marble)" opacity="0.9"/>
+  <circle cx="125" cy="125" r="10" fill="url(#marble)" opacity="0.9"/>
+  <circle cx="175" cy="125" r="10" fill="url(#marble)" opacity="0.9"/>
+  <circle cx="140" cy="100" r="11" fill="url(#marble)" opacity="0.9"/>
+  <circle cx="160" cy="100" r="11" fill="url(#marble)" opacity="0.9"/>
+
+  <!-- Vaporwave color overlay -->
+  <ellipse cx="150" cy="150" rx="45" ry="55" fill="url(#vaporwave)" filter="url(#glow)"/>
+  <rect x="95" y="220" width="110" height="130" fill="url(#vaporwave)" opacity="0.3" filter="url(#glow)"/>
+
+  <!-- Highlight on head -->
+  <ellipse cx="135" cy="130" rx="15" ry="20" fill="white" opacity="0.4"/>
+
+  <!-- Shadow on face for depth -->
+  <ellipse cx="150" cy="165" rx="30" ry="8" fill="black" opacity="0.1"/>
+</svg>

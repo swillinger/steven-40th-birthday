@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 400" fill="none">
+  <!-- Palm Tree Trunk with texture -->
+  <defs>
+    <linearGradient id="trunkGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#6B4423;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#8B5A2B;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#6B4423;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="leafGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#2D5016;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#3E7C17;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1A3409;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="leafGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#4CAF50;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#66BB6A;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#388E3C;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+      <feOffset dx="2" dy="4" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.3"/>
+      </feComponentTransfer>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Trunk segments with curves -->
+  <path d="M95 400 Q90 350 92 300 Q94 250 90 200 Q88 150 92 100 Q95 50 100 20"
+        stroke="url(#trunkGrad)" stroke-width="18" fill="none" stroke-linecap="round" filter="url(#shadow)"/>
+  <path d="M100 400 Q105 350 103 300 Q101 250 105 200 Q107 150 103 100 Q100 50 95 20"
+        stroke="url(#trunkGrad)" stroke-width="16" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+  <!-- Palm fronds - detailed -->
+  <!-- Left fronds -->
+  <path d="M100 30 Q70 25 40 35 Q20 40 10 50 Q5 55 8 58 Q12 60 20 55 Q40 45 70 35 Q85 30 100 30"
+        fill="url(#leafGrad1)" filter="url(#shadow)"/>
+  <path d="M100 30 Q75 35 50 50 Q30 60 20 75 Q15 82 18 85 Q23 87 32 80 Q52 65 75 48 Q90 37 100 30"
+        fill="url(#leafGrad2)" opacity="0.9" filter="url(#shadow)"/>
+
+  <!-- Right fronds -->
+  <path d="M100 30 Q130 25 160 35 Q180 40 190 50 Q195 55 192 58 Q188 60 180 55 Q160 45 130 35 Q115 30 100 30"
+        fill="url(#leafGrad1)" filter="url(#shadow)"/>
+  <path d="M100 30 Q125 35 150 50 Q170 60 180 75 Q185 82 182 85 Q177 87 168 80 Q148 65 125 48 Q110 37 100 30"
+        fill="url(#leafGrad2)" opacity="0.9" filter="url(#shadow)"/>
+
+  <!-- Center fronds -->
+  <path d="M100 30 Q100 15 102 5 Q103 0 105 0 Q107 0 108 5 Q110 15 110 30 Q110 40 105 42 Q100 42 100 30"
+        fill="url(#leafGrad1)" filter="url(#shadow)"/>
+  <path d="M100 30 Q105 10 110 2 Q112 -2 115 0 Q117 3 115 10 Q110 25 108 35 Q107 40 105 40 Q103 38 100 30"
+        fill="url(#leafGrad2)" opacity="0.85" filter="url(#shadow)"/>
+
+  <!-- Additional side fronds for fullness -->
+  <path d="M100 30 Q60 40 30 60 Q15 70 10 82 Q8 88 12 90 Q18 91 30 82 Q60 62 90 42 Q98 35 100 30"
+        fill="url(#leafGrad1)" opacity="0.7" filter="url(#shadow)"/>
+  <path d="M100 30 Q140 40 170 60 Q185 70 190 82 Q192 88 188 90 Q182 91 170 82 Q140 62 110 42 Q102 35 100 30"
+        fill="url(#leafGrad1)" opacity="0.7" filter="url(#shadow)"/>
+
+  <!-- Back fronds (darker) -->
+  <path d="M100 32 Q85 45 75 65 Q70 75 72 80 Q75 83 82 77 Q92 65 100 50 Q102 40 100 32"
+        fill="url(#leafGrad1)" opacity="0.5" filter="url(#shadow)"/>
+  <path d="M100 32 Q115 45 125 65 Q130 75 128 80 Q125 83 118 77 Q108 65 100 50 Q98 40 100 32"
+        fill="url(#leafGrad1)" opacity="0.5" filter="url(#shadow)"/>
+</svg>
