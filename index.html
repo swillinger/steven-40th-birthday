@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SWILLY'S 40TH | PUNTA MITA 2026</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <div class="logo">SWILLY'S 40TH</div>
+            <div class="nav-links">
+                <a href="index.html" class="active">HOME</a>
+                <a href="schedule.html">SCHEDULE</a>
+                <a href="villa.html">THE VILLA</a>
+                <a href="activities.html">ACTIVITIES</a>
+                <a href="travel.html">TRAVEL INFO</a>
+                <a href="gallery.html">GALLERY</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section - Infinite Scroll Effect -->
+    <section class="hero-infinite">
+        <div class="hero-overlay"></div>
+        <div class="grid-pattern"></div>
+
+        <div class="hero-content">
+            <div class="glitch-wrapper">
+                <h1 class="glitch" data-text="LEVEL 40">LEVEL 40</h1>
+            </div>
+            <div class="subtitle-wrapper">
+                <h2 class="neon-text">UNLOCKED</h2>
+            </div>
+            <div class="event-details">
+                <div class="detail-item">
+                    <span class="detail-icon">📍</span>
+                    <span class="detail-text">PUNTA MITA, MEXICO</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">📅</span>
+                    <span class="detail-text">JAN 29 - FEB 1, 2026</span>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🎉</span>
+                    <span class="detail-text">SWILLY'S BIRTHDAY BASH</span>
+                </div>
+            </div>
+
+            <div class="cta-buttons">
+                <a href="#countdown" class="btn-primary">VIEW COUNTDOWN</a>
+                <a href="schedule.html" class="btn-secondary">SEE THE SCHEDULE</a>
+            </div>
+        </div>
+
+        <!-- Retro Sun -->
+        <div class="retro-sun" style="position: absolute; bottom: -150px; left: 50%; transform: translateX(-50%); opacity: 0.6;"></div>
+
+        <!-- Animated Palm Trees -->
+        <div class="palm-left"></div>
+        <div class="palm-right"></div>
+
+        <!-- Sunset Lines -->
+        <div class="sunset-lines"></div>
+
+        <!-- Decorative Shapes -->
+        <div class="retro-triangle" style="top: 15%; right: 10%; opacity: 0.15;"></div>
+        <div class="retro-circle" style="top: 25%; left: 8%; opacity: 0.15;"></div>
+        <div class="retro-square" style="bottom: 20%; right: 12%; opacity: 0.15;"></div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <span>SCROLL</span>
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Weather & Swell Forecast -->
+    <section class="weather-section">
+        <div class="container">
+            <h2 class="section-title">PUNTA MITA CONDITIONS</h2>
+            <div class="zigzag-divider" style="margin-bottom: 2rem;"></div>
+
+            <div class="weather-grid">
+                <div class="weather-card">
+                    <div class="weather-icon">🌡️</div>
+                    <h3>CURRENT WEATHER</h3>
+                    <div id="current-weather">
+                        <div class="weather-temp" id="current-temp">--°F</div>
+                        <div class="weather-desc" id="current-desc">Loading...</div>
+                        <div class="weather-details">
+                            <span id="feels-like">Feels like --°F</span>
+                            <span id="humidity">Humidity --%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-card">
+                    <div class="weather-icon">🌊</div>
+                    <h3>SWELL FORECAST</h3>
+                    <div id="swell-forecast">
+                        <div class="swell-height" id="swell-height">-- ft</div>
+                        <div class="swell-desc">Wave Height</div>
+                        <div class="weather-details">
+                            <span id="swell-period">Period: --s</span>
+                            <span id="swell-direction">Direction: --</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="weather-card">
+                    <div class="weather-icon">💨</div>
+                    <h3>WIND CONDITIONS</h3>
+                    <div id="wind-forecast">
+                        <div class="weather-temp" id="wind-speed">-- mph</div>
+                        <div class="weather-desc" id="wind-desc">Wind Speed</div>
+                        <div class="weather-details">
+                            <span id="wind-direction">Direction: --</span>
+                            <span id="wind-gust">Gusts: -- mph</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="forecast-week" id="forecast-week">
+                <h3 style="font-family: var(--font-primary); color: var(--neon-cyan); text-align: center; margin: 2rem 0 1.5rem; font-size: 1.5rem;">5-DAY FORECAST</h3>
+                <div class="forecast-grid" id="forecast-grid">
+                    <!-- Populated by JavaScript -->
+                </div>
+            </div>
+
+            <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 2rem;">
+                Live data for Punta Mita, Mexico | Updates every 30 minutes
+            </p>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="countdown" class="countdown-section">
+        <div class="section-bg"></div>
+        <div class="container">
+            <h2 class="section-title" data-text="COUNTDOWN TO PARADISE">COUNTDOWN TO PARADISE</h2>
+
+            <div class="countdown-display">
+                <div class="countdown-box">
+                    <div class="countdown-number" id="days">00</div>
+                    <div class="countdown-label">DAYS</div>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="hours">00</div>
+                    <div class="countdown-label">HOURS</div>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="minutes">00</div>
+                    <div class="countdown-label">MINUTES</div>
+                </div>
+                <div class="countdown-divider">:</div>
+                <div class="countdown-box">
+                    <div class="countdown-number" id="seconds">00</div>
+                    <div class="countdown-label">SECONDS</div>
+                </div>
+            </div>
+
+            <p class="countdown-tagline">GET READY FOR THE MOST EPIC WEEKEND OF 2026</p>
+        </div>
+    </section>
+
+    <!-- Hype Section -->
+    <section class="hype-section">
+        <div class="container">
+            <div class="hype-content">
+                <h2 class="retro-title">THE ULTIMATE<br>BIRTHDAY EXPERIENCE</h2>
+                <div class="hype-grid">
+                    <div class="hype-card" data-aos="fade-up">
+                        <div class="card-icon">🌊</div>
+                        <h3>BEACHFRONT PARADISE</h3>
+                        <p>9-bedroom luxury villa right on the ocean in Punta Mita's most exclusive estate</p>
+                    </div>
+                    <div class="hype-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="card-icon">🎭</div>
+                        <h3>PHASES OF STEVEN</h3>
+                        <p>Friday night costume party celebrating every era of Swilly's legendary journey</p>
+                    </div>
+                    <div class="hype-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="card-icon">🛥️</div>
+                        <h3>PRIVATE BOAT PARTY</h3>
+                        <p>Saturday afternoon catamaran cruise with whale watching, snorkeling & endless vibes</p>
+                    </div>
+                    <div class="hype-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="card-icon">🎧</div>
+                        <h3>DJ TUNA LIVE</h3>
+                        <p>Saturday night dance party featuring resident DJ extraordinaire Scott "Tuna" Sanford</p>
+                    </div>
+                    <div class="hype-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="card-icon">🏄</div>
+                        <h3>SURF & WELLNESS</h3>
+                        <p>Morning surf sessions, pilates class, and luxury spa treatments at the villa</p>
+                    </div>
+                    <div class="hype-card" data-aos="fade-up" data-aos-delay="500">
+                        <div class="card-icon">🌮</div>
+                        <h3>MEXICAN FEASTS</h3>
+                        <p>Private chef creating incredible meals from Baja tacos to birthday cake celebrations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Venue Showcase Section -->
+    <section class="venue-showcase">
+        <div class="container">
+            <h2 class="section-title" data-text="YOUR PUNTA MITA PARADISE">YOUR PUNTA MITA PARADISE</h2>
+            <div class="zigzag-divider"></div>
+
+            <div class="photo-grid" style="margin-top: 3rem;">
+                <div class="photo-grid-item">
+                    <div class="retro-image-container">
+                        <img src="assets/images/venue/Pool 1.7.jpg" alt="Infinity Pool">
+                        <span class="neon-badge">INFINITY POOL</span>
+                    </div>
+                </div>
+                <div class="photo-grid-item">
+                    <div class="retro-image-container">
+                        <img src="assets/images/venue/Outdoor Living 1.14.jpg" alt="Ocean View Deck">
+                        <span class="neon-badge">OCEAN VIEWS</span>
+                    </div>
+                </div>
+                <div class="photo-grid-item">
+                    <div class="retro-image-container">
+                        <img src="assets/images/venue/Entertainment Room 1.8.jpg" alt="Game Room">
+                        <span class="neon-badge">GAME ROOM</span>
+                    </div>
+                </div>
+                <div class="photo-grid-item">
+                    <div class="retro-image-container">
+                        <img src="assets/images/venue/Wellness & Fitness 1.1.jpg" alt="Gym & Spa">
+                        <span class="neon-badge">GYM & SPA</span>
+                    </div>
+                </div>
+                <div class="photo-grid-item">
+                    <div class="retro-image-container">
+                        <img src="assets/images/venue/Living Spaces 1.1.jpg" alt="Living Room">
+                        <span class="neon-badge">LUXURY LIVING</span>
+                    </div>
+                </div>
+                <div class="photo-grid-item">
+                    <div class="retro-image-container">
+                        <img src="assets/images/venue/Outdoor Living 1.8.jpg" alt="Beachfront Deck">
+                        <span class="neon-badge">BEACHFRONT</span>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 2rem;">
+                <a href="villa.html" class="btn-primary">EXPLORE THE FULL VILLA</a>
+            </div>
+        </div>
+
+        <!-- Decorative Elements -->
+        <div class="retro-triangle" style="top: 10%; left: 5%;"></div>
+        <div class="retro-circle" style="bottom: 15%; right: 8%;"></div>
+        <div class="retro-square" style="top: 60%; left: 10%;"></div>
+    </section>
+
+    <!-- Quick Links Section -->
+    <section class="quick-links-section">
+        <div class="container">
+            <h2 class="section-title-alt">ESSENTIAL INFO</h2>
+            <div class="quick-links-grid">
+                <a href="schedule.html" class="quick-link-card">
+                    <div class="qlink-icon">📅</div>
+                    <h3>FULL SCHEDULE</h3>
+                    <p>Day-by-day breakdown of all the festivities</p>
+                    <span class="qlink-arrow">→</span>
+                </a>
+                <a href="villa.html" class="quick-link-card">
+                    <div class="qlink-icon">🏡</div>
+                    <h3>THE VILLA</h3>
+                    <p>Tour our incredible Punta Pacífico estate</p>
+                    <span class="qlink-arrow">→</span>
+                </a>
+                <a href="travel.html" class="quick-link-card">
+                    <div class="qlink-icon">✈️</div>
+                    <h3>TRAVEL GUIDE</h3>
+                    <p>Flights, packing tips & arrival details</p>
+                    <span class="qlink-arrow">→</span>
+                </a>
+                <a href="activities.html" class="quick-link-card">
+                    <div class="qlink-icon">🎯</div>
+                    <h3>ACTIVITIES</h3>
+                    <p>Surf, spa, golf, boat trips & more</p>
+                    <span class="qlink-arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Party Preview Section -->
+    <section class="party-preview">
+        <div class="container">
+            <div class="preview-content">
+                <div class="preview-text">
+                    <h2>FRIDAY NIGHT:<br>PHASES OF STEVEN</h2>
+                    <p class="preview-desc">Come dressed as your favorite era of Steven's journey through life</p>
+                    <ul class="phases-list">
+                        <li><span class="phase-icon">🏄</span> <strong>Surfer Bro Steve</strong> - Puka shells mandatory</li>
+                        <li><span class="phase-icon">🚀</span> <strong>Crypto Bro Steve</strong> - To the moon, baby</li>
+                        <li><span class="phase-icon">🎵</span> <strong>Music Festival Steve</strong> - The poorly hydrated legend</li>
+                        <li><span class="phase-icon">🚣</span> <strong>White Water Rafter Steve</strong> - Full send energy</li>
+                        <li><span class="phase-icon">✨</span> <strong>Any Deep Cut</strong> - Surprise us!</li>
+                    </ul>
+                    <p class="preview-note">*Special points and possibly prizes for the most creative costume*</p>
+                </div>
+                <div class="preview-visual">
+                    <div class="preview-box">
+                        <div class="preview-icon">🎭</div>
+                        <h3>DRESS CODE</h3>
+                        <p>GO WILDLY OVERBOARD</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Saturday Night Preview -->
+    <section class="saturday-preview">
+        <div class="container">
+            <div class="preview-content reverse">
+                <div class="preview-visual">
+                    <div class="preview-box fancy">
+                        <div class="preview-icon">💃</div>
+                        <h3>DRESS CODE</h3>
+                        <p>FANCY BEACH ATTIRE</p>
+                    </div>
+                </div>
+                <div class="preview-text">
+                    <h2>SATURDAY NIGHT:<br>THE FANCY BEACH RAGER</h2>
+                    <p class="preview-desc">Our full-send, no-holding-back, stretch-properly-so-you-don't-pull-something-on-the-dancefloor night</p>
+                    <ul class="phases-list">
+                        <li><span class="phase-icon">🌴</span> Tropical glam & linen that flutters dramatically</li>
+                        <li><span class="phase-icon">✨</span> Sparkles that reflect off the ocean</li>
+                        <li><span class="phase-icon">🎩</span> Panama hats welcome (looking at you, Will)</li>
+                        <li><span class="phase-icon">🎂</span> Birthday cake & mariachi celebration</li>
+                        <li><span class="phase-icon">🎧</span> DJ Tuna live set</li>
+                        <li><span class="phase-icon">💫</span> Dancing 'til the sunrise</li>
+                    </ul>
+                    <p class="preview-note">*Mara's not fucking around - this is a dancefloor commitment*</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3>SWILLY'S 40TH</h3>
+                    <p>Level 40 Unlocked<br>January 29 - February 1, 2026<br>Punta Mita, Mexico</p>
+                </div>
+                <div class="footer-col">
+                    <h3>QUICK LINKS</h3>
+                    <ul>
+                        <li><a href="schedule.html">Schedule</a></li>
+                        <li><a href="villa.html">The Villa</a></li>
+                        <li><a href="activities.html">Activities</a></li>
+                        <li><a href="travel.html">Travel Info</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>QUESTIONS?</h3>
+                    <p>Contact Mara or Steven for any questions about the weekend</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Swilly's 40th Birthday Bash | Made with 80s vibes & Miami Vice dreams</p>
+            </div>
+        </div>
+        <div class="footer-palm-pattern"></div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/weather.js"></script>
+</body>
+</html>
