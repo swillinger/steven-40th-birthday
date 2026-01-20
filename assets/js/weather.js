@@ -79,15 +79,15 @@ function updateSidebar(weatherData, marineData) {
         let swellHTML = '';
 
         if (!hasSwellData) {
-            // Data not available yet - calculate days until available
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            const daysUntil = Math.ceil((date - today) / (1000 * 60 * 60 * 24));
-            const daysUntilAvailable = Math.max(0, daysUntil - 9); // Marine API ~10 day range
+            // Data not available yet - show when it will be available
+            // Marine API provides ~10 day forecast, so available 9 days before
+            const availableDate = new Date(date);
+            availableDate.setDate(availableDate.getDate() - 9);
+            const availableDateStr = availableDate.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
             swellHTML = `
                 <div class="sidebar-swell-item" style="font-style: italic; opacity: 0.7;">
-                    Forecast available ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''} before trip
+                    Available ${availableDateStr}
                 </div>
             `;
         } else {
