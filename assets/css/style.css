@@ -1163,7 +1163,174 @@ body {
 }
 
 /* ===================================
-   WEATHER & SWELL SECTION
+   WEATHER & SURF SIDEBAR
+   =================================== */
+
+.weather-sidebar {
+    position: fixed;
+    top: 80px;
+    right: -350px;
+    width: 320px;
+    max-height: calc(100vh - 100px);
+    background: linear-gradient(135deg, rgba(10, 10, 10, 0.95), rgba(26, 0, 51, 0.95));
+    backdrop-filter: blur(10px);
+    border: 2px solid var(--neon-cyan);
+    border-right: none;
+    border-radius: 15px 0 0 15px;
+    box-shadow: -5px 0 30px rgba(0, 240, 255, 0.3);
+    z-index: 999;
+    transition: right 0.4s ease;
+    overflow-y: auto;
+}
+
+.weather-sidebar.visible {
+    right: 0;
+}
+
+.weather-sidebar.collapsed {
+    right: -280px;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.25rem;
+    border-bottom: 2px solid rgba(255, 16, 240, 0.3);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.sidebar-header h3 {
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--neon-cyan);
+    margin: 0;
+    letter-spacing: 1px;
+}
+
+.sidebar-toggle {
+    background: none;
+    border: 2px solid var(--neon-pink);
+    color: var(--neon-pink);
+    font-size: 1.5rem;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    line-height: 1;
+    padding: 0;
+}
+
+.sidebar-toggle:hover {
+    background: var(--neon-pink);
+    color: #000;
+    transform: rotate(90deg);
+}
+
+.sidebar-content {
+    padding: 1rem;
+}
+
+.sidebar-day {
+    background: rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 240, 255, 0.3);
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-bottom: 0.75rem;
+    transition: all 0.3s ease;
+}
+
+.sidebar-day:hover {
+    border-color: var(--neon-pink);
+    transform: translateX(-5px);
+}
+
+.sidebar-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 16, 240, 0.2);
+}
+
+.sidebar-day-name {
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    color: var(--neon-orange);
+    font-weight: 900;
+}
+
+.sidebar-day-date {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.sidebar-weather {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-temp {
+    font-family: var(--font-primary);
+    font-size: 1.5rem;
+    color: var(--neon-cyan);
+    font-weight: 900;
+}
+
+.sidebar-icon {
+    font-size: 1.5rem;
+}
+
+.sidebar-swell {
+    margin-top: 0.5rem;
+}
+
+.sidebar-swell-title {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--neon-pink);
+    margin-bottom: 0.25rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.sidebar-swell-item {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 0.25rem;
+    padding-left: 0.5rem;
+    border-left: 2px solid var(--neon-purple);
+}
+
+.sidebar-swell-item strong {
+    color: #fff;
+}
+
+.sidebar-footer {
+    text-align: center;
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(255, 16, 240, 0.2);
+}
+
+/* Hide on mobile */
+@media (max-width: 768px) {
+    .weather-sidebar {
+        display: none;
+    }
+}
+
+/* ===================================
+   OLD WEATHER SECTION (REMOVED)
    =================================== */
 
 .weather-section {
@@ -1171,6 +1338,7 @@ body {
     background: linear-gradient(180deg, #000 0%, #0d0020 100%);
     position: relative;
     overflow: hidden;
+    display: none; /* Hidden - using sidebar instead */
 }
 
 .weather-grid {

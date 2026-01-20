@@ -82,75 +82,19 @@
         </div>
     </section>
 
-    <!-- Weather & Swell Forecast -->
-    <section class="weather-section">
-        <div class="container">
-            <h2 class="section-title">PUNTA MITA CONDITIONS</h2>
-            <div class="zigzag-divider" style="margin-bottom: 2rem;"></div>
-
-            <div class="weather-grid">
-                <div class="weather-card">
-                    <div class="weather-icon">🌡️</div>
-                    <h3>CURRENT WEATHER</h3>
-                    <div id="current-weather">
-                        <div class="weather-temp" id="current-temp">--°F</div>
-                        <div class="weather-desc" id="current-desc">Loading...</div>
-                        <div class="weather-details">
-                            <span id="feels-like">Feels like --°F</span>
-                            <span id="humidity">Humidity --%</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="weather-card">
-                    <div class="weather-icon">🌊</div>
-                    <h3>SWELL FORECAST</h3>
-                    <div id="swell-forecast">
-                        <div class="swell-height" id="swell-height">-- ft</div>
-                        <div class="swell-desc">Wave Height</div>
-                        <div class="weather-details">
-                            <span id="swell-period">Period: --s</span>
-                            <span id="swell-direction">Direction: --</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="weather-card">
-                    <div class="weather-icon">💨</div>
-                    <h3>WIND CONDITIONS</h3>
-                    <div id="wind-forecast">
-                        <div class="weather-temp" id="wind-speed">-- mph</div>
-                        <div class="weather-desc" id="wind-desc">Wind Speed</div>
-                        <div class="weather-details">
-                            <span id="wind-direction">Direction: --</span>
-                            <span id="wind-gust">Gusts: -- mph</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="forecast-week" id="forecast-week">
-                <h3 style="font-family: var(--font-primary); color: var(--neon-cyan); text-align: center; margin: 2rem 0 1.5rem; font-size: 1.5rem;">5-DAY FORECAST</h3>
-                <div class="forecast-grid" id="forecast-grid">
-                    <!-- Populated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- Daily Swell Forecast -->
-            <div class="swell-forecast-section" style="margin-top: 3rem;">
-                <h3 style="font-family: var(--font-primary); color: var(--neon-pink); text-align: center; margin-bottom: 2rem; font-size: 1.8rem;">
-                    🌊 DAILY SURF FORECAST 🏄
-                </h3>
-                <div class="swell-forecast-grid" id="swell-forecast-grid">
-                    <!-- Populated by JavaScript -->
-                </div>
-            </div>
-
-            <p style="text-align: center; color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-top: 2rem;">
-                Live data for Punta Mita, Mexico | Updates every 30 minutes
-            </p>
+    <!-- Weather & Surf Sidebar (appears on scroll) -->
+    <aside id="weather-sidebar" class="weather-sidebar">
+        <div class="sidebar-header">
+            <h3>🌴 TRIP FORECAST</h3>
+            <button class="sidebar-toggle" onclick="toggleSidebar()">×</button>
         </div>
-    </section>
+        <div class="sidebar-content">
+            <div id="sidebar-forecast-days">
+                <!-- Populated by JavaScript -->
+            </div>
+            <p class="sidebar-footer">Live data • Updates every 30 min</p>
+        </div>
+    </aside>
 
     <!-- Countdown Section -->
     <section id="countdown" class="countdown-section">

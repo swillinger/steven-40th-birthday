@@ -6,14 +6,18 @@
 const PUNTA_MITA_LAT = 20.7878;
 const PUNTA_MITA_LON = -105.5208;
 
+// Trip dates (Jan 29 - Feb 1, 2026)
+const TRIP_START = new Date('2026-01-29');
+const TRIP_END = new Date('2026-02-01');
+
 // Fetch Weather Data
 async function fetchWeather() {
     try {
-        // Current weather + 5-day forecast
-        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${PUNTA_MITA_LAT}&longitude=${PUNTA_MITA_LON}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,wind_direction_10m,wind_gusts_10m&daily=weather_code,temperature_2m_max,temperature_2m_min&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America/Mexico_City&forecast_days=7`;
+        // Weather forecast (up to 16 days to ensure we get trip dates)
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${PUNTA_MITA_LAT}&longitude=${PUNTA_MITA_LON}&daily=weather_code,temperature_2m_max,temperature_2m_min,wind_speed_10m_max,wind_direction_10m_dominant&temperature_unit=fahrenheit&wind_speed_unit=mph&timezone=America/Mexico_City&forecast_days=16`;
 
-        // Marine/swell data - current + daily forecast with multiple swell components
-        const marineUrl = `https://marine-api.open-meteo.com/v1/marine?latitude=${PUNTA_MITA_LAT}&longitude=${PUNTA_MITA_LON}&current=wave_height,wave_direction,wave_period&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max,wind_wave_height_max,wind_wave_direction_dominant,wind_wave_period_max&timezone=America/Mexico_City&forecast_days=7`;
+        // Marine/swell data - daily forecast with multiple swell components
+        const marineUrl = `https://marine-api.open-meteo.com/v1/marine?latitude=${PUNTA_MITA_LAT}&longitude=${PUNTA_MITA_LON}&daily=wave_height_max,wave_direction_dominant,wave_period_max,swell_wave_height_max,swell_wave_direction_dominant,swell_wave_period_max,wind_wave_height_max,wind_wave_direction_dominant,wind_wave_period_max&timezone=America/Mexico_City&forecast_days=16`;
 
         const [weatherResponse, marineResponse] = await Promise.all([
             fetch(weatherUrl),
@@ -23,147 +27,117 @@ async function fetchWeather() {
         const weatherData = await weatherResponse.json();
         const marineData = await marineResponse.json();
 
-        updateCurrentWeather(weatherData);
-        updateSwellForecast(marineData);
-        updateForecast(weatherData);
-        updateDailySwellForecast(marineData);
+        updateSidebar(weatherData, marineData);
     } catch (error) {
         console.error('Error fetching weather:', error);
-        document.getElementById('current-desc').textContent = 'Unable to load weather';
     }
 }
 
-// Update Current Weather
-function updateCurrentWeather(data) {
-    const current = data.current;
+// Update Sidebar with Trip Dates Only
+function updateSidebar(weatherData, marineData) {
+    const container = document.getElementById('sidebar-forecast-days');
+    if (!container) return;
 
-    document.getElementById('current-temp').textContent = `${Math.round(current.temperature_2m)}°F`;
-    document.getElementById('current-desc').textContent = getWeatherDescription(current.weather_code);
-    document.getElementById('feels-like').textContent = `Feels like ${Math.round(current.apparent_temperature)}°F`;
-    document.getElementById('humidity').textContent = `Humidity ${current.relative_humidity_2m}%`;
+    container.innerHTML = '';
 
-    // Wind data
-    document.getElementById('wind-speed').textContent = `${Math.round(current.wind_speed_10m)} mph`;
-    document.getElementById('wind-direction').textContent = `Direction: ${getWindDirection(current.wind_direction_10m)}`;
-    document.getElementById('wind-gust').textContent = `Gusts: ${Math.round(current.wind_gusts_10m)} mph`;
-}
+    const weatherDaily = weatherData.daily;
+    const marineDaily = marineData.daily;
 
-// Update Swell Forecast
-function updateSwellForecast(data) {
-    const current = data.current;
-
-    const waveHeight = current.wave_height || 0;
-    document.getElementById('swell-height').textContent = `${waveHeight.toFixed(1)} ft`;
-    document.getElementById('swell-period').textContent = `Period: ${current.wave_period || '--'}s`;
-    document.getElementById('swell-direction').textContent = `Direction: ${getWindDirection(current.wave_direction || 0)}`;
-}
-
-// Update 5-Day Forecast
-function updateForecast(data) {
-    const daily = data.daily;
-    const forecastGrid = document.getElementById('forecast-grid');
-    forecastGrid.innerHTML = '';
-
-    // Show next 5 days
-    for (let i = 0; i < 5; i++) {
-        const date = new Date(daily.time[i]);
-        const dayName = i === 0 ? 'Today' : date.toLocaleDateString('en-US', { weekday: 'short' });
-
-        const forecastDay = document.createElement('div');
-        forecastDay.className = 'forecast-day';
-        forecastDay.innerHTML = `
-            <div class="forecast-day-name">${dayName}</div>
-            <div class="forecast-icon">${getWeatherIcon(daily.weather_code[i])}</div>
-            <div class="forecast-temp">${Math.round(daily.temperature_2m_max[i])}°</div>
-            <div class="forecast-condition">${getWeatherDescription(daily.weather_code[i])}</div>
-        `;
-        forecastGrid.appendChild(forecastDay);
+    // Filter for trip dates only (Jan 29 - Feb 1, 2026)
+    const tripDays = [];
+    for (let i = 0; i < weatherDaily.time.length; i++) {
+        const date = new Date(weatherDaily.time[i]);
+        if (date >= TRIP_START && date <= TRIP_END) {
+            tripDays.push({
+                date: date,
+                weatherIndex: i,
+                marineIndex: i
+            });
+        }
     }
-}
 
-// Update Daily Swell Forecast
-function updateDailySwellForecast(data) {
-    const daily = data.daily;
-    const swellGrid = document.getElementById('swell-forecast-grid');
+    // Create sidebar card for each trip day
+    tripDays.forEach((day, index) => {
+        const i = day.weatherIndex;
+        const date = day.date;
 
-    if (!swellGrid) return;
+        const dayNames = ['Thursday', 'Friday', 'Saturday', 'Sunday'];
+        const dayName = dayNames[index] || date.toLocaleDateString('en-US', { weekday: 'long' });
+        const dateStr = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 
-    swellGrid.innerHTML = '';
+        // Weather data
+        const tempMax = Math.round(weatherDaily.temperature_2m_max[i]);
+        const tempMin = Math.round(weatherDaily.temperature_2m_min[i]);
+        const weatherCode = weatherDaily.weather_code[i];
+        const windSpeed = Math.round(weatherDaily.wind_speed_10m_max[i]);
+        const windDir = getWindDirection(weatherDaily.wind_direction_10m_dominant[i]);
 
-    // Show next 5 days (or 4 days for the trip Jan 29 - Feb 1)
-    for (let i = 0; i < Math.min(5, daily.time.length); i++) {
-        const date = new Date(daily.time[i]);
-        const dayName = i === 0 ? 'Today' : date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
-
-        const swellDay = document.createElement('div');
-        swellDay.className = 'swell-forecast-day';
-
-        // Get all swell components
+        // Swell data
         const groundSwell = {
-            height: daily.swell_wave_height_max[i] || 0,
-            period: daily.swell_wave_period_max[i] || 0,
-            direction: daily.swell_wave_direction_dominant[i] || 0
+            height: marineDaily.swell_wave_height_max[i] || 0,
+            period: marineDaily.swell_wave_period_max[i] || 0,
+            direction: marineDaily.swell_wave_direction_dominant[i] || 0
         };
 
         const windSwell = {
-            height: daily.wind_wave_height_max[i] || 0,
-            period: daily.wind_wave_period_max[i] || 0,
-            direction: daily.wind_wave_direction_dominant[i] || 0
+            height: marineDaily.wind_wave_height_max[i] || 0,
+            period: marineDaily.wind_wave_period_max[i] || 0,
+            direction: marineDaily.wind_wave_direction_dominant[i] || 0
         };
 
-        const totalWave = {
-            height: daily.wave_height_max[i] || 0,
-            period: daily.wave_period_max[i] || 0,
-            direction: daily.wave_direction_dominant[i] || 0
-        };
-
-        // Build swell components HTML
-        let swellComponents = '';
-
-        // Show ground swell if significant
+        // Build swell HTML
+        let swellHTML = '';
         if (groundSwell.height > 0.5) {
-            swellComponents += `
-                <div class="swell-component primary">
-                    <div class="swell-label">Ground Swell</div>
-                    <div class="swell-size">${groundSwell.height.toFixed(1)}ft @ ${groundSwell.period.toFixed(0)}s</div>
-                    <div class="swell-dir">${getWindDirection(groundSwell.direction)} (${Math.round(groundSwell.direction)}°)</div>
+            swellHTML += `
+                <div class="sidebar-swell-item">
+                    <strong>${groundSwell.height.toFixed(1)}ft</strong> @ ${groundSwell.period.toFixed(0)}s
+                    ${getWindDirection(groundSwell.direction)} (Ground)
                 </div>
             `;
         }
-
-        // Show wind swell if significant
         if (windSwell.height > 0.5) {
-            swellComponents += `
-                <div class="swell-component secondary">
-                    <div class="swell-label">Wind Swell</div>
-                    <div class="swell-size">${windSwell.height.toFixed(1)}ft @ ${windSwell.period.toFixed(0)}s</div>
-                    <div class="swell-dir">${getWindDirection(windSwell.direction)} (${Math.round(windSwell.direction)}°)</div>
+            swellHTML += `
+                <div class="sidebar-swell-item">
+                    <strong>${windSwell.height.toFixed(1)}ft</strong> @ ${windSwell.period.toFixed(0)}s
+                    ${getWindDirection(windSwell.direction)} (Wind)
+                </div>
+            `;
+        }
+        if (!swellHTML) {
+            const totalWave = marineDaily.wave_height_max[i] || 0;
+            const totalPeriod = marineDaily.wave_period_max[i] || 0;
+            const totalDir = marineDaily.wave_direction_dominant[i] || 0;
+            swellHTML = `
+                <div class="sidebar-swell-item">
+                    <strong>${totalWave.toFixed(1)}ft</strong> @ ${totalPeriod.toFixed(0)}s ${getWindDirection(totalDir)}
                 </div>
             `;
         }
 
-        // If no components, show total
-        if (!swellComponents) {
-            swellComponents = `
-                <div class="swell-component">
-                    <div class="swell-size">${totalWave.height.toFixed(1)}ft @ ${totalWave.period.toFixed(0)}s</div>
-                    <div class="swell-dir">${getWindDirection(totalWave.direction)} (${Math.round(totalWave.direction)}°)</div>
+        const dayCard = document.createElement('div');
+        dayCard.className = 'sidebar-day';
+        dayCard.innerHTML = `
+            <div class="sidebar-day-header">
+                <div>
+                    <div class="sidebar-day-name">${dayName}</div>
+                    <div class="sidebar-day-date">${dateStr}</div>
                 </div>
-            `;
-        }
-
-        swellDay.innerHTML = `
-            <div class="swell-day-header">
-                <div class="swell-day-name">${dayName}</div>
-                <div class="swell-day-icon">🌊</div>
+                <div class="sidebar-icon">${getWeatherIcon(weatherCode)}</div>
             </div>
-            <div class="swell-components">
-                ${swellComponents}
+            <div class="sidebar-weather">
+                <div class="sidebar-temp">${tempMax}°/${tempMin}°F</div>
+                <div style="font-size: 0.8rem; color: rgba(255,255,255,0.7);">
+                    💨 ${windSpeed}mph ${windDir}
+                </div>
+            </div>
+            <div class="sidebar-swell">
+                <div class="sidebar-swell-title">🌊 Surf</div>
+                ${swellHTML}
             </div>
         `;
 
-        swellGrid.appendChild(swellDay);
-    }
+        container.appendChild(dayCard);
+    });
 }
 
 // Weather code to description
@@ -218,9 +192,61 @@ function getWindDirection(degrees) {
     return directions[index];
 }
 
-// Initialize weather on page load
-if (document.getElementById('current-weather')) {
+// Sidebar scroll detection
+let sidebarVisible = false;
+let sidebarCollapsed = false;
+
+function handleSidebarScroll() {
+    const sidebar = document.getElementById('weather-sidebar');
+    if (!sidebar) return;
+
+    const scrollPosition = window.scrollY;
+    const heroHeight = window.innerHeight; // Hero takes full viewport
+
+    // Show sidebar after scrolling past hero
+    if (scrollPosition > heroHeight * 0.8 && !sidebarCollapsed) {
+        if (!sidebarVisible) {
+            sidebar.classList.add('visible');
+            sidebarVisible = true;
+        }
+    } else {
+        if (sidebarVisible && !sidebarCollapsed) {
+            sidebar.classList.remove('visible');
+            sidebarVisible = false;
+        }
+    }
+}
+
+// Toggle sidebar collapse
+function toggleSidebar() {
+    const sidebar = document.getElementById('weather-sidebar');
+    if (!sidebar) return;
+
+    if (sidebar.classList.contains('visible')) {
+        sidebar.classList.remove('visible');
+        sidebar.classList.add('collapsed');
+        sidebarCollapsed = true;
+        sidebarVisible = false;
+    } else {
+        sidebar.classList.remove('collapsed');
+        sidebar.classList.add('visible');
+        sidebarCollapsed = false;
+        sidebarVisible = true;
+    }
+}
+
+// Make toggleSidebar available globally
+window.toggleSidebar = toggleSidebar;
+
+// Initialize weather sidebar
+if (document.getElementById('weather-sidebar')) {
     fetchWeather();
     // Update every 30 minutes
     setInterval(fetchWeather, 30 * 60 * 1000);
+
+    // Listen for scroll events
+    window.addEventListener('scroll', handleSidebarScroll);
+
+    // Initial check
+    handleSidebarScroll();
 }
