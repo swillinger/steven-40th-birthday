@@ -72,46 +72,64 @@ function updateSidebar(weatherData, marineData) {
         const windSpeed = Math.round(weatherDaily.wind_speed_10m_max[i]);
         const windDir = getWindDirection(weatherDaily.wind_direction_10m_dominant[i]);
 
-        // Swell data
-        const groundSwell = {
-            height: marineDaily.swell_wave_height_max[i] || 0,
-            period: marineDaily.swell_wave_period_max[i] || 0,
-            direction: marineDaily.swell_wave_direction_dominant[i] || 0
-        };
+        // Swell data - check if available (API only goes ~10 days out)
+        const hasSwellData = marineDaily.wave_height_max[i] !== null &&
+                            marineDaily.wave_height_max[i] !== undefined;
 
-        const windSwell = {
-            height: marineDaily.wind_wave_height_max[i] || 0,
-            period: marineDaily.wind_wave_period_max[i] || 0,
-            direction: marineDaily.wind_wave_direction_dominant[i] || 0
-        };
-
-        // Build swell HTML
         let swellHTML = '';
-        if (groundSwell.height > 0.5) {
-            swellHTML += `
-                <div class="sidebar-swell-item">
-                    <strong>${groundSwell.height.toFixed(1)}ft</strong> @ ${groundSwell.period.toFixed(0)}s
-                    ${getWindDirection(groundSwell.direction)} (Ground)
-                </div>
-            `;
-        }
-        if (windSwell.height > 0.5) {
-            swellHTML += `
-                <div class="sidebar-swell-item">
-                    <strong>${windSwell.height.toFixed(1)}ft</strong> @ ${windSwell.period.toFixed(0)}s
-                    ${getWindDirection(windSwell.direction)} (Wind)
-                </div>
-            `;
-        }
-        if (!swellHTML) {
-            const totalWave = marineDaily.wave_height_max[i] || 0;
-            const totalPeriod = marineDaily.wave_period_max[i] || 0;
-            const totalDir = marineDaily.wave_direction_dominant[i] || 0;
+
+        if (!hasSwellData) {
+            // Data not available yet - calculate days until available
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const daysUntil = Math.ceil((date - today) / (1000 * 60 * 60 * 24));
+            const daysUntilAvailable = Math.max(0, daysUntil - 9); // Marine API ~10 day range
+
             swellHTML = `
-                <div class="sidebar-swell-item">
-                    <strong>${totalWave.toFixed(1)}ft</strong> @ ${totalPeriod.toFixed(0)}s ${getWindDirection(totalDir)}
+                <div class="sidebar-swell-item" style="font-style: italic; opacity: 0.7;">
+                    Forecast available ${daysUntilAvailable} day${daysUntilAvailable !== 1 ? 's' : ''} before trip
                 </div>
             `;
+        } else {
+            // Build swell data
+            const groundSwell = {
+                height: marineDaily.swell_wave_height_max[i] || 0,
+                period: marineDaily.swell_wave_period_max[i] || 0,
+                direction: marineDaily.swell_wave_direction_dominant[i] || 0
+            };
+
+            const windSwell = {
+                height: marineDaily.wind_wave_height_max[i] || 0,
+                period: marineDaily.wind_wave_period_max[i] || 0,
+                direction: marineDaily.wind_wave_direction_dominant[i] || 0
+            };
+
+            if (groundSwell.height > 0.5) {
+                swellHTML += `
+                    <div class="sidebar-swell-item">
+                        <strong>${groundSwell.height.toFixed(1)}ft</strong> @ ${groundSwell.period.toFixed(0)}s
+                        ${getWindDirection(groundSwell.direction)} (Ground)
+                    </div>
+                `;
+            }
+            if (windSwell.height > 0.5) {
+                swellHTML += `
+                    <div class="sidebar-swell-item">
+                        <strong>${windSwell.height.toFixed(1)}ft</strong> @ ${windSwell.period.toFixed(0)}s
+                        ${getWindDirection(windSwell.direction)} (Wind)
+                    </div>
+                `;
+            }
+            if (!swellHTML) {
+                const totalWave = marineDaily.wave_height_max[i] || 0;
+                const totalPeriod = marineDaily.wave_period_max[i] || 0;
+                const totalDir = marineDaily.wave_direction_dominant[i] || 0;
+                swellHTML = `
+                    <div class="sidebar-swell-item">
+                        <strong>${totalWave.toFixed(1)}ft</strong> @ ${totalPeriod.toFixed(0)}s ${getWindDirection(totalDir)}
+                    </div>
+                `;
+            }
         }
 
         const dayCard = document.createElement('div');
