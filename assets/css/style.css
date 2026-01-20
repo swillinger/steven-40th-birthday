@@ -330,7 +330,7 @@ body {
     transform: rotate(10deg);
 }
 
-/* Sunset Lines */
+/* Sunset Lines - Poolside Gradient */
 .sunset-lines {
     position: absolute;
     bottom: 0;
@@ -342,10 +342,15 @@ body {
             0deg,
             transparent,
             transparent 20px,
-            rgba(255, 107, 53, 0.1) 20px,
-            rgba(255, 107, 53, 0.1) 22px
+            rgba(0, 201, 255, 0.08) 20px,
+            rgba(0, 201, 255, 0.08) 21px,
+            transparent 21px,
+            transparent 22px,
+            rgba(255, 160, 122, 0.08) 22px,
+            rgba(255, 160, 122, 0.08) 23px
         );
     pointer-events: none;
+    opacity: 0.7;
 }
 
 .scroll-indicator {
@@ -886,6 +891,205 @@ body {
     .footer-grid {
         grid-template-columns: 1fr;
         gap: 2rem;
+    }
+}
+
+/* ===================================
+   CLASSIC MAC OS WINDOW CHROME
+   =================================== */
+
+.mac-window {
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow:
+        0 10px 40px rgba(0, 0, 0, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+    transform-origin: center top;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.mac-window.minimized {
+    transform: scale(0.95) translateY(20px);
+    opacity: 0.7;
+}
+
+.mac-window.opened {
+    animation: windowOpen 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes windowOpen {
+    0% {
+        transform: scale(0.8) translateY(-20px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+.mac-titlebar {
+    background: linear-gradient(180deg,
+        rgba(230, 230, 230, 0.98) 0%,
+        rgba(210, 210, 210, 0.98) 100%);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.mac-buttons {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.mac-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.mac-btn:hover {
+    transform: scale(1.1);
+}
+
+.mac-btn-close {
+    background: linear-gradient(180deg, #ff5f57 0%, #ff4136 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.mac-btn-minimize {
+    background: linear-gradient(180deg, #ffbd2e 0%, #ff9500 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.mac-btn-maximize {
+    background: linear-gradient(180deg, #28ca42 0%, #00d639 100%);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.mac-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 13px;
+    font-weight: 600;
+    color: rgba(0, 0, 0, 0.7);
+    letter-spacing: 0.3px;
+}
+
+.mac-content {
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.9);
+}
+
+/* ===================================
+   POOL RIPPLE BACKGROUND
+   =================================== */
+
+.pool-ripple-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        radial-gradient(circle at 30% 40%, rgba(111, 221, 255, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 70% 60%, rgba(0, 201, 255, 0.2) 0%, transparent 50%);
+    animation: rippleMove 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+@keyframes rippleMove {
+    0%, 100% {
+        transform: scale(1) rotate(0deg);
+        opacity: 0.6;
+    }
+    50% {
+        transform: scale(1.05) rotate(2deg);
+        opacity: 0.8;
+    }
+}
+
+/* ===================================
+   DECORATIVE IMAGES (PALMS & STATUES)
+   =================================== */
+
+.palm-tree-img {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    opacity: 0.3;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+    animation: sway 6s ease-in-out infinite;
+    z-index: 1;
+}
+
+.palm-tree-img.left {
+    left: 5%;
+    bottom: 10%;
+    transform-origin: bottom center;
+}
+
+.palm-tree-img.right {
+    right: 5%;
+    bottom: 10%;
+    transform-origin: bottom center;
+    animation-delay: -3s;
+}
+
+@keyframes sway {
+    0%, 100% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(-3deg);
+    }
+    75% {
+        transform: rotate(3deg);
+    }
+}
+
+.statue-img {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    opacity: 0.25;
+    filter:
+        drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15))
+        saturate(0.8)
+        brightness(1.1);
+    animation: float 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.statue-img.left {
+    left: 8%;
+    top: 20%;
+    animation-delay: -2s;
+}
+
+.statue-img.right {
+    right: 8%;
+    top: 40%;
+    animation-delay: -5s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(2deg);
     }
 }
 
