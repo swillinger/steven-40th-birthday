@@ -1,0 +1,491 @@
+/* ===================================
+   SWILLY'S 40TH - VICE CITY AESTHETIC
+   1980s Miami • Neon Nights • Beach Vibes
+   =================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+
+:root {
+    /* Vice City Color Palette */
+    --neon-pink: #FF1493;
+    --neon-cyan: #00D4FF;
+    --neon-purple: #9D00FF;
+    --sunset-orange: #FF6B35;
+    --sunset-yellow: #FFD700;
+    --dark-purple: #1A0033;
+    --dark-blue: #000033;
+    --black: #000000;
+    --white: #FFFFFF;
+
+    /* Fonts */
+    --font-display: 'Orbitron', 'Impact', 'Arial Black', sans-serif;
+    --font-body: 'Arial', 'Helvetica', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--black);
+    color: var(--white);
+    overflow-x: hidden;
+}
+
+/* ===================================
+   RETRO GRID BACKGROUND
+   =================================== */
+
+.grid-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background:
+        linear-gradient(0deg, transparent 24%, rgba(255, 20, 147, 0.05) 25%, rgba(255, 20, 147, 0.05) 26%, transparent 27%, transparent 74%, rgba(255, 20, 147, 0.05) 75%, rgba(255, 20, 147, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 212, 255, 0.05) 25%, rgba(0, 212, 255, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 212, 255, 0.05) 75%, rgba(0, 212, 255, 0.05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0.3;
+}
+
+/* ===================================
+   NAVIGATION
+   =================================== */
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.8) 100%);
+    border-bottom: 3px solid var(--neon-pink);
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.nav-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: var(--neon-pink);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    text-shadow:
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink),
+        0 0 30px var(--neon-pink);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    font-family: var(--font-display);
+    color: var(--neon-cyan);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-shadow: 0 0 10px var(--neon-cyan);
+    transition: all 0.3s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--neon-pink);
+    text-shadow:
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink);
+}
+
+/* ===================================
+   HERO SECTION - VICE CITY SUNSET
+   =================================== */
+
+.hero-vice {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(180deg,
+            #1A0033 0%,
+            #4B0082 20%,
+            #FF1493 40%,
+            #FF6B35 60%,
+            #FFD700 80%,
+            #00D4FF 100%
+        );
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Palm sunset overlay */
+.palm-sunset-bg {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 60%;
+    background-image: url('../images/decorations/palm-sunset.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+/* Grid overlay */
+.hero-grid {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 40px,
+            rgba(255, 20, 147, 0.3) 40px,
+            rgba(255, 20, 147, 0.3) 42px
+        );
+    perspective: 500px;
+    transform: rotateX(60deg);
+    z-index: 2;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    line-height: 0.9;
+    margin-bottom: 1rem;
+    text-shadow:
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink),
+        0 0 80px var(--neon-pink),
+        5px 5px 0px var(--neon-cyan),
+        10px 10px 0px rgba(0, 0, 0, 0.5);
+    animation: titlePulse 3s ease-in-out infinite;
+}
+
+@keyframes titlePulse {
+    0%, 100% {
+        text-shadow:
+            0 0 10px var(--neon-pink),
+            0 0 20px var(--neon-pink),
+            0 0 40px var(--neon-pink),
+            0 0 80px var(--neon-pink),
+            5px 5px 0px var(--neon-cyan),
+            10px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+    50% {
+        text-shadow:
+            0 0 20px var(--neon-pink),
+            0 0 40px var(--neon-pink),
+            0 0 60px var(--neon-pink),
+            0 0 100px var(--neon-pink),
+            5px 5px 0px var(--neon-cyan),
+            10px 10px 0px rgba(0, 0, 0, 0.5);
+    }
+}
+
+.hero-subtitle {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    margin-bottom: 3rem;
+    text-shadow:
+        0 0 10px var(--neon-cyan),
+        0 0 20px var(--neon-cyan),
+        0 0 40px var(--neon-cyan);
+}
+
+.hero-info {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+    margin: 3rem 0;
+}
+
+.info-item {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    padding: 1rem 2rem;
+    border: 3px solid var(--neon-pink);
+    background: rgba(0, 0, 0, 0.7);
+    box-shadow:
+        0 0 20px var(--neon-pink),
+        inset 0 0 20px rgba(255, 20, 147, 0.2);
+}
+
+/* ===================================
+   BUTTONS - NEON STYLE
+   =================================== */
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.btn-neon {
+    font-family: var(--font-display);
+    text-decoration: none;
+    padding: 1.5rem 3rem;
+    font-size: 1.2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    border: 3px solid;
+    background: rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+}
+
+.btn-neon.pink {
+    color: var(--neon-pink);
+    border-color: var(--neon-pink);
+    box-shadow:
+        0 0 20px var(--neon-pink),
+        inset 0 0 20px rgba(255, 20, 147, 0.1);
+}
+
+.btn-neon.pink:hover {
+    background: var(--neon-pink);
+    color: var(--black);
+    box-shadow:
+        0 0 40px var(--neon-pink),
+        0 0 60px var(--neon-pink);
+}
+
+.btn-neon.cyan {
+    color: var(--neon-cyan);
+    border-color: var(--neon-cyan);
+    box-shadow:
+        0 0 20px var(--neon-cyan),
+        inset 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.btn-neon.cyan:hover {
+    background: var(--neon-cyan);
+    color: var(--black);
+    box-shadow:
+        0 0 40px var(--neon-cyan),
+        0 0 60px var(--neon-cyan);
+}
+
+/* ===================================
+   SECTIONS
+   =================================== */
+
+.section {
+    position: relative;
+    padding: 5rem 2rem;
+    background: var(--black);
+}
+
+.section-dark {
+    background: linear-gradient(180deg, var(--dark-purple) 0%, var(--black) 100%);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 10;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 8vw, 5rem);
+    font-weight: 900;
+    color: var(--neon-pink);
+    text-transform: uppercase;
+    letter-spacing: 6px;
+    text-align: center;
+    margin-bottom: 3rem;
+    text-shadow:
+        0 0 10px var(--neon-pink),
+        0 0 20px var(--neon-pink),
+        0 0 40px var(--neon-pink);
+}
+
+/* Greek wave divider */
+.wave-divider {
+    width: 100%;
+    height: 60px;
+    background-image: url('../images/decorations/greek-waves.webp');
+    background-size: auto 60px;
+    background-repeat: repeat-x;
+    margin: 3rem 0;
+    opacity: 0.8;
+    filter:
+        hue-rotate(280deg)
+        saturate(2)
+        brightness(1.5);
+}
+
+/* ===================================
+   CARDS - NEON BOXES
+   =================================== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card-neon {
+    background: rgba(0, 0, 0, 0.8);
+    border: 3px solid var(--neon-cyan);
+    padding: 2rem;
+    transition: all 0.3s ease;
+    box-shadow:
+        0 0 20px rgba(0, 212, 255, 0.3),
+        inset 0 0 20px rgba(0, 212, 255, 0.1);
+}
+
+.card-neon:hover {
+    border-color: var(--neon-pink);
+    box-shadow:
+        0 0 40px rgba(255, 20, 147, 0.6),
+        inset 0 0 20px rgba(255, 20, 147, 0.2);
+    transform: translateY(-5px);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    filter: drop-shadow(0 0 10px var(--neon-cyan));
+}
+
+.card-neon h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--neon-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.card-neon p {
+    color: var(--white);
+    line-height: 1.8;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+.main-footer {
+    background: var(--black);
+    border-top: 3px solid var(--neon-pink);
+    padding: 3rem 2rem;
+    text-align: center;
+    box-shadow: 0 0 20px var(--neon-pink);
+}
+
+.footer-title {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    color: var(--neon-pink);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px var(--neon-pink);
+}
+
+.footer-text {
+    color: var(--neon-cyan);
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--neon-cyan);
+}
+
+/* ===================================
+   DECORATIONS
+   =================================== */
+
+.ferrari-decoration {
+    position: absolute;
+    width: 150px;
+    height: auto;
+    opacity: 0.2;
+    filter: drop-shadow(0 0 20px var(--neon-pink));
+}
+
+.statue-decoration {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    opacity: 0.1;
+    filter: drop-shadow(0 0 20px var(--neon-cyan));
+}
+
+/* ===================================
+   MOBILE RESPONSIVE
+   =================================== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+
+    .hero-info {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+    }
+
+    .btn-neon {
+        width: 100%;
+    }
+}

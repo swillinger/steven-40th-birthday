@@ -4,135 +4,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SWILLY'S 40TH | PUNTA MITA 2026</title>
-    <link rel="stylesheet" href="assets/css/poolsuite-style.css">
+    <link rel="stylesheet" href="assets/css/vice-city.css">
 </head>
 <body>
+    <!-- Retro Grid Background -->
+    <div class="grid-background"></div>
+
     <!-- Navigation -->
     <nav class="main-nav">
         <div class="nav-container">
-            <div class="logo">SWILLY'S 40TH ☼</div>
+            <div class="logo">SWILLY'S 40TH</div>
             <div class="nav-links">
-                <a href="index.html" class="active">HOME</a>
-                <a href="schedule.html">SCHEDULE</a>
-                <a href="villa.html">THE VILLA</a>
-                <a href="activities.html">ACTIVITIES</a>
-                <a href="travel.html">TRAVEL</a>
-                <a href="gallery.html">GALLERY</a>
+                <a href="#home" class="active">HOME</a>
+                <a href="#details">DETAILS</a>
+                <a href="#schedule">SCHEDULE</a>
+                <a href="#villa">VILLA</a>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section - Poolsuite Style -->
-    <section class="hero-poolsuite">
-        <!-- Background layers -->
-        <div class="pool-water-bg"></div>
-        <div class="palm-sunset-overlay"></div>
+    <!-- Hero Section - Vice City Style -->
+    <section id="home" class="hero-vice">
+        <!-- Palm sunset background -->
+        <div class="palm-sunset-bg"></div>
 
-        <!-- Greek wave borders -->
-        <div class="greek-waves-top"></div>
-        <div class="greek-waves-bottom"></div>
+        <!-- Retro grid -->
+        <div class="hero-grid"></div>
 
         <div class="hero-content">
             <h1 class="hero-title">LEVEL 40</h1>
             <h2 class="hero-subtitle">UNLOCKED</h2>
 
-            <div class="hero-details">
-                <div class="detail-item">
-                    <span class="detail-icon">📍</span>
-                    <span class="detail-text">PUNTA MITA</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">📅</span>
-                    <span class="detail-text">JAN 29 - FEB 1</span>
-                </div>
-                <div class="detail-item">
-                    <span class="detail-icon">☼</span>
-                    <span class="detail-text">2026</span>
-                </div>
+            <div class="hero-info">
+                <div class="info-item">📍 PUNTA MITA</div>
+                <div class="info-item">📅 JAN 29 - FEB 1</div>
+                <div class="info-item">🎉 2026</div>
             </div>
 
             <div class="cta-buttons">
-                <a href="#countdown" class="btn-primary">COUNTDOWN</a>
-                <a href="schedule.html" class="btn-secondary">SCHEDULE</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Countdown Section -->
-    <section id="countdown" class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">COUNTDOWN TO PARADISE</h2>
-                <p class="section-subtitle">The ultimate birthday weekend starts in...</p>
-            </div>
-
-            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 2rem; max-width: 800px; margin: 0 auto;">
-                <div style="background: white; border: 4px solid var(--pool-cyan); padding: 2rem; text-align: center;">
-                    <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--hot-magenta);" id="days">00</div>
-                    <div style="font-family: var(--font-display); font-size: 1rem; color: var(--text-dark); letter-spacing: 2px;">DAYS</div>
-                </div>
-                <div style="background: white; border: 4px solid var(--pool-cyan); padding: 2rem; text-align: center;">
-                    <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--hot-magenta);" id="hours">00</div>
-                    <div style="font-family: var(--font-display); font-size: 1rem; color: var(--text-dark); letter-spacing: 2px;">HOURS</div>
-                </div>
-                <div style="background: white; border: 4px solid var(--pool-cyan); padding: 2rem; text-align: center;">
-                    <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--hot-magenta);" id="minutes">00</div>
-                    <div style="font-family: var(--font-display); font-size: 1rem; color: var(--text-dark); letter-spacing: 2px;">MINUTES</div>
-                </div>
-                <div style="background: white; border: 4px solid var(--pool-cyan); padding: 2rem; text-align: center;">
-                    <div style="font-family: var(--font-display); font-size: 4rem; font-weight: 900; color: var(--hot-magenta);" id="seconds">00</div>
-                    <div style="font-family: var(--font-display); font-size: 1rem; color: var(--text-dark); letter-spacing: 2px;">SECONDS</div>
-                </div>
+                <a href="#details" class="btn-neon pink">GET HYPED</a>
+                <a href="#schedule" class="btn-neon cyan">THE PLAN</a>
             </div>
         </div>
 
-        <!-- Statue decorations -->
-        <img src="assets/images/decorations/statue-bust.png" class="statue-float left" alt="Statue">
-        <img src="assets/images/decorations/statue-bust.png" class="statue-float right" alt="Statue">
+        <!-- Decorations -->
+        <img src="assets/images/decorations/statue-bust.png" class="statue-decoration" style="left: 5%; top: 20%;" alt="">
+        <img src="assets/images/decorations/statue-bust.png" class="statue-decoration" style="right: 5%; top: 30%;" alt="">
     </section>
 
-    <div class="greek-divider"></div>
+    <!-- Wave Divider -->
+    <div class="wave-divider"></div>
 
-    <!-- Highlights Section -->
-    <section class="section section-alt">
+    <!-- Details Section -->
+    <section id="details" class="section section-dark">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">THE ULTIMATE WEEKEND</h2>
-                <p class="section-subtitle">Four days of unforgettable vibes</p>
-            </div>
+            <h2 class="section-title">THE ULTIMATE WEEKEND</h2>
 
             <div class="card-grid">
-                <div class="card">
+                <div class="card-neon">
                     <div class="card-icon">🌊</div>
                     <h3>BEACHFRONT VILLA</h3>
                     <p>9-bedroom luxury estate right on the ocean in Punta Mita's most exclusive community</p>
                 </div>
 
-                <div class="card">
+                <div class="card-neon">
                     <div class="card-icon">🎭</div>
                     <h3>PHASES OF STEVEN</h3>
                     <p>Friday night costume party celebrating every legendary era of Swilly's journey</p>
                 </div>
 
-                <div class="card">
+                <div class="card-neon">
                     <div class="card-icon">🛥️</div>
                     <h3>PRIVATE BOAT</h3>
-                    <p>Saturday catamaran cruise with whale watching, snorkeling & endless ocean vibes</p>
+                    <p>Saturday catamaran cruise with whale watching, snorkeling & endless vibes</p>
                 </div>
 
-                <div class="card">
+                <div class="card-neon">
                     <div class="card-icon">🎧</div>
                     <h3>DJ TUNA LIVE</h3>
-                    <p>Saturday night dance party with resident DJ Scott "Tuna" Sanford</p>
+                    <p>Saturday night dance party featuring DJ Scott "Tuna" Sanford</p>
                 </div>
 
-                <div class="card">
+                <div class="card-neon">
                     <div class="card-icon">🏄</div>
                     <h3>SURF & WELLNESS</h3>
                     <p>Morning surf sessions, pilates classes, and luxury spa treatments</p>
                 </div>
 
-                <div class="card">
+                <div class="card-neon">
                     <div class="card-icon">🌮</div>
                     <h3>PRIVATE CHEF</h3>
                     <p>Incredible meals from Baja tacos to birthday cake celebrations</p>
@@ -140,60 +99,90 @@
             </div>
         </div>
 
-        <!-- Statue decorations -->
-        <img src="assets/images/decorations/statue-bust.png" class="statue-float left" alt="Statue" style="top: 50%;">
-        <img src="assets/images/decorations/statue-bust.png" class="statue-float right" alt="Statue" style="top: 60%;">
+        <!-- Ferrari decoration -->
+        <img src="assets/images/decorations/ferrari.avif" class="ferrari-decoration" style="left: 10%; bottom: 10%;" alt="">
     </section>
 
-    <div class="greek-divider"></div>
+    <!-- Wave Divider -->
+    <div class="wave-divider"></div>
 
-    <!-- Quick Links -->
-    <section class="section">
+    <!-- Schedule Section -->
+    <section id="schedule" class="section">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">ESSENTIAL INFO</h2>
-            </div>
+            <h2 class="section-title">THE SCHEDULE</h2>
 
             <div class="card-grid">
-                <a href="schedule.html" class="card" style="text-decoration: none;">
-                    <div class="card-icon">📅</div>
-                    <h3>SCHEDULE</h3>
-                    <p>Day-by-day breakdown of all the festivities</p>
-                </a>
+                <div class="card-neon">
+                    <div class="card-icon">🌴</div>
+                    <h3>THURSDAY JAN 29</h3>
+                    <p><strong>Arrivals</strong><br>
+                    Fly into Puerto Vallarta • Airport shuttle provided • Welcome drinks • Settle in</p>
+                    <p style="margin-top: 1rem;"><strong>Evening:</strong> Casual dinner at villa</p>
+                </div>
 
-                <a href="villa.html" class="card" style="text-decoration: none;">
-                    <div class="card-icon">🏡</div>
-                    <h3>THE VILLA</h3>
-                    <p>Tour our incredible Punta Pacífico estate</p>
-                </a>
+                <div class="card-neon">
+                    <div class="card-icon">🏄</div>
+                    <h3>FRIDAY JAN 30</h3>
+                    <p><strong>Morning:</strong> Surf & Pilates • Spa treatments • Pool day<br>
+                    <strong>Lunch:</strong> Private chef<br>
+                    <strong>Night:</strong> PHASES OF STEVEN costume party</p>
+                </div>
 
-                <a href="travel.html" class="card" style="text-decoration: none;">
-                    <div class="card-icon">✈️</div>
-                    <h3>TRAVEL</h3>
-                    <p>Flights, packing tips & arrival details</p>
-                </a>
+                <div class="card-neon">
+                    <div class="card-icon">🛥️</div>
+                    <h3>SATURDAY JAN 31</h3>
+                    <p><strong>Morning:</strong> Chill & recover<br>
+                    <strong>Afternoon:</strong> Private catamaran cruise • Whale watching • Snorkeling<br>
+                    <strong>Night:</strong> Fancy beach rager with DJ Tuna • Birthday cake</p>
+                </div>
 
-                <a href="activities.html" class="card" style="text-decoration: none;">
-                    <div class="card-icon">🎯</div>
-                    <h3>ACTIVITIES</h3>
-                    <p>Surf, spa, golf, boat trips & more</p>
-                </a>
+                <div class="card-neon">
+                    <div class="card-icon">☀️</div>
+                    <h3>SUNDAY FEB 1</h3>
+                    <p><strong>Morning:</strong> Breakfast & beach time<br>
+                    <strong>Afternoon:</strong> Departures • Shuttles to airport</p>
+                </div>
             </div>
         </div>
+
+        <!-- Statue decorations -->
+        <img src="assets/images/decorations/statue-bust.png" class="statue-decoration" style="right: 8%; top: 20%;" alt="">
+    </section>
+
+    <!-- Wave Divider -->
+    <div class="wave-divider"></div>
+
+    <!-- Villa Section -->
+    <section id="villa" class="section section-dark">
+        <div class="container">
+            <h2 class="section-title">PUNTA PACÍFICO 7</h2>
+
+            <div class="card-neon" style="text-align: center; max-width: 800px; margin: 0 auto;">
+                <div class="card-icon">🏡</div>
+                <h3>YOUR LUXURY ESTATE</h3>
+                <p style="font-size: 1.1rem; line-height: 2;">
+                    9 bedrooms • Beachfront infinity pool • Private spa & gym • Game room • Ocean views • Full staff • Private chef • Punta Mita's most exclusive community
+                </p>
+                <div style="margin-top: 2rem;">
+                    <a href="villa.html" class="btn-neon pink">SEE THE VILLA</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ferrari decoration -->
+        <img src="assets/images/decorations/ferrari.avif" class="ferrari-decoration" style="right: 10%; top: 30%;" alt="">
     </section>
 
     <!-- Footer -->
     <footer class="main-footer">
-        <div class="footer-content">
-            <div class="footer-title">SWILLY'S 40TH ☼</div>
-            <div class="footer-text">
-                Level 40 Unlocked<br>
-                January 29 - February 1, 2026<br>
-                Punta Mita, Mexico
-            </div>
-            <div class="footer-bottom">
-                © 2026 Swilly's 40th Birthday Bash | Retro Summer Vibes
-            </div>
+        <div class="footer-title">SWILLY'S 40TH</div>
+        <div class="footer-text">
+            LEVEL 40 UNLOCKED<br>
+            JANUARY 29 - FEBRUARY 1, 2026<br>
+            PUNTA MITA, MEXICO
+        </div>
+        <div style="color: var(--neon-pink); font-family: var(--font-display); letter-spacing: 2px;">
+            © 2026 • VICE CITY VIBES
         </div>
     </footer>
 
