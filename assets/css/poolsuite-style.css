@@ -1,0 +1,478 @@
+/* ===================================
+   SWILLY'S 40TH - POOLSUITE AESTHETIC
+   Retro Summer • Greek Patterns • Clean Vibes
+   =================================== */
+
+:root {
+    /* Poolsuite-Inspired Palette */
+    --pool-cyan: #00D4FF;
+    --pool-blue: #0098DB;
+    --pool-deep: #006B9F;
+    --sunset-pink: #FF69B4;
+    --sunset-coral: #FF6B9D;
+    --hot-magenta: #FF1493;
+    --sunshine-yellow: #FFD700;
+    --cream: #FFF8E7;
+    --white: #FFFFFF;
+    --greek-blue: #4A90E2;
+    --text-dark: #2C3E50;
+
+    /* Retro Fonts */
+    --font-display: 'Courier New', 'Monaco', monospace;
+    --font-body: 'Helvetica', 'Arial', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-body);
+    background: var(--cream);
+    color: var(--text-dark);
+    overflow-x: hidden;
+    line-height: 1.6;
+}
+
+/* ===================================
+   NAVIGATION - RETRO CLEAN
+   =================================== */
+
+.main-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    background: var(--white);
+    border-bottom: 4px solid var(--pool-cyan);
+    box-shadow: 0 2px 20px rgba(0, 212, 255, 0.2);
+}
+
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--pool-cyan);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+}
+
+.nav-links a {
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--hot-magenta);
+}
+
+/* ===================================
+   HERO SECTION - POOLSUITE VIBES
+   =================================== */
+
+.hero-poolsuite {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background:
+        linear-gradient(180deg,
+            var(--sunset-pink) 0%,
+            var(--sunshine-yellow) 50%,
+            var(--pool-cyan) 100%
+        );
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Pool water background */
+.pool-water-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url('../images/decorations/pool-water.png');
+    background-size: cover;
+    background-position: center;
+    opacity: 0.3;
+    mix-blend-mode: overlay;
+    animation: waterFlow 30s ease-in-out infinite;
+}
+
+@keyframes waterFlow {
+    0%, 100% { transform: scale(1) translate(0, 0); }
+    50% { transform: scale(1.05) translate(-2%, 2%); }
+}
+
+/* Palm sunset overlay */
+.palm-sunset-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background-image: url('../images/decorations/palm-sunset.jpg');
+    background-size: cover;
+    background-position: center bottom;
+    opacity: 0.6;
+}
+
+/* Greek wave pattern borders */
+.greek-waves-top,
+.greek-waves-bottom {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background-image: url('../images/decorations/greek-waves.webp');
+    background-size: auto 80px;
+    background-repeat: repeat-x;
+    opacity: 0.9;
+    z-index: 2;
+}
+
+.greek-waves-top {
+    top: 0;
+}
+
+.greek-waves-bottom {
+    bottom: 0;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+    max-width: 900px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(4rem, 12vw, 8rem);
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    line-height: 1;
+    margin-bottom: 1rem;
+    text-shadow:
+        4px 4px 0 var(--hot-magenta),
+        8px 8px 0 var(--pool-cyan),
+        12px 12px 20px rgba(0, 0, 0, 0.3);
+}
+
+.hero-subtitle {
+    font-size: clamp(1.2rem, 3vw, 2rem);
+    color: var(--white);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 2rem;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.hero-details {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.detail-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.detail-icon {
+    font-size: 2.5rem;
+    filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.detail-text {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--white);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ===================================
+   BUTTONS - RETRO CLEAN
+   =================================== */
+
+.cta-buttons {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.btn-primary,
+.btn-secondary {
+    font-family: var(--font-display);
+    text-decoration: none;
+    padding: 1.2rem 2.5rem;
+    font-size: 1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: 3px solid;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-primary {
+    background: var(--white);
+    color: var(--hot-magenta);
+    border-color: var(--hot-magenta);
+}
+
+.btn-primary:hover {
+    background: var(--hot-magenta);
+    color: var(--white);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.4);
+}
+
+.btn-secondary {
+    background: transparent;
+    color: var(--white);
+    border-color: var(--white);
+}
+
+.btn-secondary:hover {
+    background: var(--white);
+    color: var(--pool-cyan);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 255, 255, 0.4);
+}
+
+/* ===================================
+   SECTIONS - CLEAN RETRO LAYOUT
+   =================================== */
+
+.section {
+    position: relative;
+    padding: 5rem 2rem;
+    background: var(--cream);
+}
+
+.section-alt {
+    background: var(--white);
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 900;
+    color: var(--pool-cyan);
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    margin-bottom: 1rem;
+}
+
+.section-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-dark);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Greek wave divider */
+.greek-divider {
+    width: 100%;
+    height: 60px;
+    background-image: url('../images/decorations/greek-waves.webp');
+    background-size: auto 60px;
+    background-repeat: repeat-x;
+    margin: 3rem 0;
+    opacity: 0.7;
+}
+
+/* ===================================
+   STATUE DECORATIONS
+   =================================== */
+
+.statue-float {
+    position: absolute;
+    width: 200px;
+    height: auto;
+    opacity: 0.15;
+    pointer-events: none;
+    animation: float 8s ease-in-out infinite;
+    z-index: 1;
+}
+
+.statue-float.left {
+    left: 5%;
+    top: 10%;
+}
+
+.statue-float.right {
+    right: 5%;
+    top: 30%;
+    animation-delay: -4s;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+    50% {
+        transform: translateY(-20px) rotate(2deg);
+    }
+}
+
+/* ===================================
+   GRID LAYOUTS
+   =================================== */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.card {
+    background: var(--white);
+    border: 3px solid var(--pool-cyan);
+    padding: 2rem;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+    border-color: var(--hot-magenta);
+}
+
+.card-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.card h3 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--pool-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.card p {
+    color: var(--text-dark);
+    line-height: 1.8;
+}
+
+/* ===================================
+   FOOTER
+   =================================== */
+
+.main-footer {
+    background: var(--white);
+    border-top: 4px solid var(--pool-cyan);
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-title {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--pool-cyan);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+.footer-text {
+    color: var(--text-dark);
+    margin-bottom: 2rem;
+}
+
+.footer-bottom {
+    padding-top: 2rem;
+    border-top: 2px solid var(--cream);
+    color: var(--text-dark);
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   MOBILE RESPONSIVE
+   =================================== */
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+        letter-spacing: 4px;
+    }
+
+    .hero-details {
+        gap: 1.5rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+        width: 100%;
+        text-align: center;
+    }
+
+    .statue-float {
+        display: none;
+    }
+}
